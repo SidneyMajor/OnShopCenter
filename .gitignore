@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/OnShopCenter/Home.aspx.designer.cs
+/OnShopCenter/Home.aspx.cs
+/OnShopCenter/Home.aspx
+/OnShopCenter/CommunPages/Login.aspx.designer.cs
+/OnShopCenter/CommunPages/Login.aspx.cs
+/OnShopCenter/CommunPages/Login.aspx

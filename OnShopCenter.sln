@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnShopCenter", "OnShopCenter\OnShopCenter.csproj", "{FCA0AC5F-3875-421F-84CF-470EF627770D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCA0AC5F-3875-421F-84CF-470EF627770D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA0AC5F-3875-421F-84CF-470EF627770D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA0AC5F-3875-421F-84CF-470EF627770D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA0AC5F-3875-421F-84CF-470EF627770D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EEF9FF4-1414-4EF0-A8C7-ABCEE46D8C7A}
+	EndGlobalSection
+EndGlobal
