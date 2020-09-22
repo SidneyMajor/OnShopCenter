@@ -67,7 +67,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CommunPages\Login.aspx" />
+    <Content Include="Config\eCommerceDoc\css\style.css" />
+    <Content Include="Config\eCommerceDoc\css\table.css" />
+    <Content Include="Config\eCommerceDoc\css\util.css" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Config\eCommerceDoc\images\bg-01.jpg" />
+    <Content Include="Config\eCommerceDoc\images\icons\favicon.ico" />
+    <Content Include="Config\eCommerceDoc\img\bg.jpg" />
+    <Content Include="Config\eCommerceDoc\js\main.js" />
+    <Content Include="Config\eCommerceDoc\vendor\animate\animate.css" />
+    <Content Include="Config\eCommerceDoc\vendor\animsition\css\animsition.css" />
+    <Content Include="Config\eCommerceDoc\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\animsition\js\animsition.js" />
+    <Content Include="Config\eCommerceDoc\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\js\popper.js" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Config\eCommerceDoc\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Config\eCommerceDoc\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Config\eCommerceDoc\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Config\eCommerceDoc\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Config\eCommerceDoc\vendor\daterangepicker\moment.js" />
+    <Content Include="Config\eCommerceDoc\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Config\eCommerceDoc\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Config\eCommerceDoc\vendor\select2\select2.css" />
+    <Content Include="Config\eCommerceDoc\vendor\select2\select2.js" />
+    <Content Include="Config\eCommerceDoc\vendor\select2\select2.min.css" />
+    <Content Include="Config\eCommerceDoc\vendor\select2\select2.min.js" />
+    <Content Include="Home\ChangePassword.aspx" />
+    <Content Include="Home\HomePage.aspx" />
+    <Content Include="Home\Login.aspx" />
     <Content Include="Config\assets\css\all.css" />
     <Content Include="Config\assets\css\animate.min.css" />
     <Content Include="Config\assets\css\aos.css" />
@@ -384,60 +430,60 @@
     <Content Include="Config\assets\webfonts\fa-brands-400.svg" />
     <Content Include="Config\assets\webfonts\fa-regular-400.svg" />
     <Content Include="Config\assets\webfonts\fa-solid-900.svg" />
-    <Content Include="Config\eCommerce Doc\css\font-awesome.min.css" />
-    <Content Include="Config\eCommerce Doc\css\main.css" />
-    <Content Include="Config\eCommerce Doc\css\normalize.min.css" />
-    <Content Include="Config\eCommerce Doc\fonts\fontawesome-webfont.svg" />
-    <Content Include="Config\eCommerce Doc\img\logo.png" />
-    <Content Include="Config\eCommerce Doc\index.html" />
-    <Content Include="Config\eCommerce Doc\js\custom.js" />
-    <Content Include="Config\eCommerce Doc\js\jquery-1.11.0.min.js" />
-    <Content Include="Config\eCommerce Doc\js\jquery.nav.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shAutoloader.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushAppleScript.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushAS3.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushBash.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushColdFusion.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushCpp.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushCSharp.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushCss.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushDelphi.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushDiff.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushErlang.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushGroovy.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushJava.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushJavaFX.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushJScript.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushPerl.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushPhp.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushPlain.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushPowerShell.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushPython.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushRuby.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushSass.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushScala.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushSql.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushVb.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shBrushXml.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shCore.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\scripts\shLegacy.js" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCore.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreDefault.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreDjango.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreEclipse.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreEmacs.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreFadeToGrey.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreMDUltra.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreMidnight.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shCoreRDark.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeDefault.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeDjango.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeEclipse.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeEmacs.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeFadeToGrey.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeMDUltra.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeMidnight.css" />
-    <Content Include="Config\eCommerce Doc\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="Config\eCommerceDoc\css\font-awesome.min.css" />
+    <Content Include="Config\eCommerceDoc\css\main.css" />
+    <Content Include="Config\eCommerceDoc\css\normalize.min.css" />
+    <Content Include="Config\eCommerceDoc\fonts\fontawesome-webfont.svg" />
+    <Content Include="Config\eCommerceDoc\img\logo.png" />
+    <Content Include="Config\eCommerceDoc\index.html" />
+    <Content Include="Config\eCommerceDoc\js\custom.js" />
+    <Content Include="Config\eCommerceDoc\js\jquery-1.11.0.min.js" />
+    <Content Include="Config\eCommerceDoc\js\jquery.nav.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shAutoloader.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushAS3.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushBash.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushCpp.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushCss.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushDiff.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushErlang.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushJava.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushJScript.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushPerl.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushPhp.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushPlain.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushPython.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushRuby.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushSass.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushScala.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushSql.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushVb.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shBrushXml.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shCore.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\scripts\shLegacy.js" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCore.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreDefault.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreDjango.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreEclipse.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreEmacs.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreMDUltra.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreMidnight.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shCoreRDark.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeDefault.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeDjango.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeEclipse.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeEmacs.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeMDUltra.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeMidnight.css" />
+    <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeRDark.css" />
     <Content Include="Config\images\boxes_1.png" />
     <Content Include="Config\images\boxes_2.png" />
     <Content Include="Config\images\box_1.jpg" />
@@ -519,23 +565,61 @@
     <Content Include="Config\styles\product.css" />
     <Content Include="Config\styles\product_responsive.css" />
     <Content Include="Config\styles\responsive.css" />
-    <Content Include="Home.aspx" />
+    <Content Include="Home\NotFound.aspx" />
+    <Content Include="Home\RecoverPassword.aspx" />
+    <Content Include="Home\Register.aspx" />
+    <Content Include="Home\SetNewPassword.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommunPages\Login.aspx.cs">
+    <Compile Include="Home\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CommunPages\Login.aspx.designer.cs">
+    <Compile Include="Home\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Home\NotFound.aspx.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Home\NotFound.aspx.designer.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\RecoverPassword.aspx.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\RecoverPassword.aspx.designer.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\SetNewPassword.aspx.cs">
+      <DependentUpon>SetNewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\SetNewPassword.aspx.designer.cs">
+      <DependentUpon>SetNewPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -655,11 +739,72 @@
     <Content Include="Config\assets\webfonts\fa-solid-900.ttf" />
     <Content Include="Config\assets\webfonts\fa-solid-900.woff" />
     <Content Include="Config\assets\webfonts\fa-solid-900.woff2" />
-    <Content Include="Config\eCommerce Doc\fonts\fontawesome-webfont.eot" />
-    <Content Include="Config\eCommerce Doc\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Config\eCommerce Doc\fonts\fontawesome-webfont.woff" />
-    <Content Include="Config\eCommerce Doc\fonts\FontAwesome.otf" />
-    <Content Include="Config\eCommerce Doc\img\Thumbs.db" />
+    <Content Include="Config\eCommerceDoc\fonts\fontawesome-webfont.eot" />
+    <Content Include="Config\eCommerceDoc\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\fontawesome-webfont.woff" />
+    <Content Include="Config\eCommerceDoc\fonts\FontAwesome.otf" />
+    <Content Include="Config\eCommerceDoc\img\Thumbs.db" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Config\eCommerceDoc\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Config\eCommerceDoc\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
