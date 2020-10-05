@@ -76,12 +76,12 @@
                                 &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="new_password" ControlToValidate="repeat_password" ErrorMessage="Password does not match!" ForeColor="Red" Type="Integer"></asp:CompareValidator>
                             </div>
 
-                            <div class="m-t-5">
-                                <asp:Label ID="lbl_result" runat="server" Text="" CssClass="login100-form-title" ForeColor="Red"></asp:Label><br />
+                            <div class="mt-5">
+                                <asp:Label ID="lbl_result" runat="server" Text="" CssClass="alert-success text-center" ForeColor="Red"></asp:Label><br />
                             </div>
 
                         </div>
-                        <div class="container-login100-form-btn">
+                        <div class="container-login100-form-btn mt-2">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
                                 <asp:Button ID="btn_changePw" runat="server" Text="Change" class="login100-form-btn" OnClick="btn_changepw_Click"></asp:Button>
