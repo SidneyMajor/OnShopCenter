@@ -70,8 +70,8 @@
                                 <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="login100-form-btn" OnClick="btn_login_Click" />
                             </div>
                         </div>
-                        <div class="alert-danger mt-2 text-center">
-                            <asp:Label ID="lbl_Erro" runat="server" CssClass="label-input100" ForeColor="Red" Font-Size="X-Large"></asp:Label>
+                        <div class="mt-2">
+                            <asp:Label ID="lbl_Erro" runat="server" CssClass="alert-danger label-input100 text-center" ForeColor="Red" Font-Size="X-Large" ></asp:Label>
                         </div>
                         <div class="flex-col-c p-t-50">
                             <span class="txt1 p-b-17">Or Sign Up Using

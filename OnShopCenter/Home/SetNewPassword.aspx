@@ -47,7 +47,7 @@
                         <span class="login100-form-title p-b-59">
                             <asp:Label ID="lbl_mg" runat="server" Text=""></asp:Label></span>
 
-                        <span class="login100-form-title p-b-59">Change Password</span>
+                        <span class="login100-form-title p-b-59">Set New Password</span>
                         
                         <div class="wrap-input100 validate-input" data-validate="New Password is required">
                             <span class="label-input100">New Password</span>
@@ -72,8 +72,8 @@
                             </div>
                         </div>
 
-                        <div class="m-t-5">
-                            <asp:Label ID="lbl_result" runat="server" Text="" class="login100-form-title"></asp:Label><br />
+                        <div class="mt-5">
+                            <asp:Label ID="lbl_result" runat="server" Text="" class="alert-success"></asp:Label><br />
                         </div>
 
                     </div>

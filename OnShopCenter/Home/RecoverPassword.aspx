@@ -59,8 +59,8 @@
                                 <asp:Button ID="btn_recoverpw" runat="server" Text="Recover" class="login100-form-btn" OnClick="btn_recoverpw_Click"></asp:Button>
                             </div>
                         </div>
-                        <div>
-                            <asp:Label ID="lbl_result" runat="server" class="label-input100"></asp:Label>
+                        <div class="text-center mt-4">
+                            <asp:Label ID="lbl_result" runat="server" class="label-input100 alert-info "></asp:Label>
                             <br />
                             <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
                         </div>
