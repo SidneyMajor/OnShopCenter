@@ -67,6 +67,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-reboot.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap.min.css" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.bundle.js" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.js" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.min.js" />
     <Content Include="Config\eCommerceDoc\css\style.css" />
     <Content Include="Config\eCommerceDoc\css\table.css" />
     <Content Include="Config\eCommerceDoc\css\util.css" />
@@ -572,6 +582,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Service.cs" />
     <Compile Include="Home\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -805,6 +816,16 @@
     <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Config\eCommerceDoc\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap.min.css.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.js.map" />
+    <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

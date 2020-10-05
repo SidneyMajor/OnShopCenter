@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>On Shop Center</title>
     <meta name="description" content="" />
@@ -35,99 +35,143 @@
     <link rel="stylesheet" type="text/css" href="/Config/eCommerceDoc/css/util.css" />
     <link rel="stylesheet" type="text/css" href="/Config/eCommerceDoc/css/main.css" />
     <!--===============================================================================================-->
+    <link href="../Config/eCommerceDoc/bootstrap-4.5.2-dist/css/bootstrap.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
-       <div class="limiter">
-            <div class="container-login100" style="background-image: url('/Config/eCommerceDoc/images/bg-01.jpg');">
-                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+<body style="background-image: url('/Config/eCommerceDoc/images/bg-01.jpg'); background-size: cover; background-repeat: no-repeat; padding: 15px;">
+    <form id="form1" runat="server" class="validate-form ">
+        <div class="container">
+            <div class="row ml-5">
+                <div class="col-10 ">
                     <div class="login100-form validate-form">
-                        <span class="login100-form-title p-b-20">Sign Up
-                        </span>
+                        <span class="login100-form-title p-b-20 mt-5">Sign Up </span>
 
-                        <div class="wrap-input100 validate-input" data-validate="Name is required">
-                            <span class="label-input100">Full Name</span>
-                            <input class="input101" type="text" name="name" placeholder="Name..." id="name" runat="server" />
-                            <span class="focus-input100"></span>
+                        <div class="alert-success btn-block">
+                            <asp:Label ID="lbl_result" runat="server" Text=""  CssClass="text-center" Font-Size="X-Large"></asp:Label><br />
                         </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Address is required">
-                            <span class="label-input100">Address</span>
-                            <input class="input101" type="text" name="address" placeholder="Address" id="address" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
+                        <div class="m-5 p-5 bg-white" style="border-radius: 10px;">
 
-                        <div class="wrap-input100 validate-input" data-validate="Tax Number is required">
-                            <span class="label-input100">Tax Number</span>
-                            <input class="input101" type="text" name="taxnumber" placeholder="Tax Number" id="taxnumber" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                            <span class="label-input100">Email</span>
-                            <input class="input101" type="text" name="email" placeholder="Email addess..." id="email" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
+                            <div class="row">
 
-                        <div class="wrap-input100 validate-input" data-validate="Username is required">
-                            <span class="label-input100">Username</span>
-                            <input class="input101" type="text" name="username" placeholder="Username..." id="username" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
+                                <div class="col-md-6 mt-1">
+                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                        <input class="input101" type="text" name="name" placeholder="Full name" id="fullname" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input">
+                                        <span class="label-input100">Gender</span>
+                                        <asp:DropDownList ID="ddl_gender" runat="server" CssClass="dropdown-item">
+                                            <asp:ListItem>M</asp:ListItem>
+                                            <asp:ListItem>F</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Address is required">
+                                        <input class="input101" type="text" name="address" placeholder="Address" id="address" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Zip Code is required">
+                                        <input class="input101" type="text" name="zipcodes" placeholder="0000-000" id="zipcode" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Tax Number is required">
+                                        <input class="input101" type="text" name="taxnumber" placeholder="Tax Number" id="taxnumber" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input">
+                                        <input class="input101" type="text" name="phonenumber" placeholder="Phone Number" id="phonenumber" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Date of Birth is required">
+                                        <span class="label-input100">Date of Birth</span>
+                                        <input class="input101 start-date" type="date" name="datanasc" id="datanasc" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="wrap-input100 validate-input" data-validate="Type of profile is required">
+                                        <span class="label-input100">Type of profile</span>
+                                        <asp:DropDownList ID="ddl_profile" runat="server" CssClass="dropdown-item" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole]"></asp:SqlDataSource>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                        <input class="input101" type="text" name="email" placeholder="Email: ex@abc.xyz" id="email" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
 
-                       
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <span class="label-input100">Password</span>
-                            <input class="input101" type="password" name="pass" placeholder="*************" id="password" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="wrap-input100 validate-input" data-validate="Repeat Password is required">
-                            <span class="label-input100">Repeat Password</span>
-                            <input class="input101" type="password" name="repeat-pass" placeholder="*************" id="repeat_password" runat="server" />
-                            <span class="focus-input100"></span>
-                        </div>
-
-                        <div class="m-t-2">
-                            &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="password" ControlToValidate="repeat_password" ErrorMessage="Password does not match!" ForeColor="Red" Type="Integer" SetFocusOnError="True"></asp:CompareValidator>
-                        </div>
-                        <div>
-                            <asp:Label ID="lbl_result" runat="server" Text="" Font-Size="Small"></asp:Label><br />
-                        </div>
-
-                        <div class="container-login100-form-btn m-t-32">
-                            <div class="wrap-login100-form-btn">
-                                <div class="login100-form-bgbtn"></div>
-                                <asp:Button ID="btn_signUp" runat="server" Text="Sign up" class="login100-form-btn" OnClick="btn_signUp_Click"></asp:Button>
-
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                        <input class="input101" type="password" name="pass" placeholder="Password" id="password" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="wrap-input100 validate-input" data-validate="Repeat Password is required">
+                                        <input class="input101" type="password" name="repeat-pass" placeholder="Repeat Password" id="repeat_password" runat="server" />
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-2">
+                                &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="password" ControlToValidate="repeat_password" ErrorMessage="Password does not match!" ForeColor="Red" Type="Integer" SetFocusOnError="True"></asp:CompareValidator>
                             </div>
 
-                            <a href="Login.aspx" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Sign in
-							<i class="fa fa-long-arrow-right m-l-5"></i>
-                            </a>
+
+                            <div class="container-login100-form-btn m-t-32">
+                                <div class="wrap-login100-form-btn">
+                                    <div class="login100-form-bgbtn"></div>
+                                    <asp:Button ID="btn_signUp" runat="server" Text="Sign up" CssClass="login100-form-btn" OnClick="btn_signUp_Click"></asp:Button>
+
+                                </div>
+
+                                <a href="Login.aspx" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Sign in
+							        <i class="fa fa-long-arrow-right m-l-5"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
     </form>
-     <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/animsition/js/animsition.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
-        <script src="../Config/eCommerceDoc/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../Config/eCommerceDoc/vendor/bootstrap/js/bootstrap.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/select2/select2.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/daterangepicker/moment.min.js"></script>
-        <script src="../Config/eCommerceDoc/vendor/daterangepicker/daterangepicker.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/vendor/countdowntime/countdowntime.js"></script>
-        <!--===============================================================================================-->
-        <script src="../Config/eCommerceDoc/js/main.js"></script>
-        <script src="../Config/eCommerceDoc/js/jquery-1.11.0.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
+    <script src="../Config/eCommerceDoc/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../Config/eCommerceDoc/vendor/bootstrap/js/bootstrap.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/daterangepicker/moment.min.js"></script>
+    <script src="../Config/eCommerceDoc/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="../Config/eCommerceDoc/js/main.js"></script>
+    <script src="../Config/eCommerceDoc/js/jquery-1.11.0.min.js"></script>
+    <script src="../Config/eCommerceDoc/bootstrap-4.5.2-dist/js/bootstrap.js"></script>
 </body>
 </html>

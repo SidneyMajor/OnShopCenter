@@ -8,8 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>On Shop Center</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />   
     <link rel="shortcut icon" type="image/x-icon" href="/Config/assets/img/favicon.ico" />
 
     <link rel="icon" type="image/png" href="/Config/eCommerceDoc/images/icons/favicon.ico" />
@@ -20,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/Config/plugins/OwlCarousel2-2.2.1/animate.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/main_styles.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/responsive.css" />
+    <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -48,7 +48,7 @@
                 <div class="menu_phone d-flex flex-row align-items-center justify-content-start">
                     <div>
                         <div>
-                            <img src="images/phone.svg" alt="https://www.flaticon.com/authors/freepik" />
+                            <img src="/Config/images/phone.svg" alt="https://www.flaticon.com/authors/freepik" />
                         </div>
                     </div>
                     <div>+1 912-252-7350</div>
@@ -565,7 +565,7 @@
                                                 <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                                                     <div>
                                                         <div>
-                                                            <img src="images/heart_2.svg" class="svg" alt="" /><div>+</div>
+                                                            <img src="/Config/images/heart_2.svg" class="svg" alt="" /><div>+</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -729,7 +729,7 @@
                                                 <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
                                                     <div>
                                                         <div>
-                                                            <img src="images/heart_2.svg" class="svg" alt="" /><div>+</div>
+                                                            <img src="/Config/images/heart_2.svg" class="svg" alt="" /><div>+</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -968,7 +968,7 @@
                                         <div class="copyright order-md-1 order-2">
                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                             Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                            All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                            All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="#" target="_blank">Sidney Major</a>
                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                         </div>
                                         <nav class="footer_nav ml-md-auto order-md-2 order-1">
@@ -992,8 +992,8 @@
     </form>
 
     <script src="/Config/js/jquery-3.2.1.min.js"></script>
-    <script src="/Config/styles/bootstrap-4.1.2/popper.js"></script>
-    <script src="/Config/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <script src="../Config/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <script src="../Config/styles/bootstrap-4.1.2/popper.js"></script>
     <script src="/Config/plugins/greensock/TweenMax.min.js"></script>
     <script src="/Config/plugins/greensock/TimelineMax.min.js"></script>
     <script src="/Config/plugins/scrollmagic/ScrollMagic.min.js"></script>
@@ -1004,5 +1004,7 @@
     <script src="/Config/plugins/progressbar/progressbar.min.js"></script>
     <script src="/Config/plugins/parallax-js-master/parallax.min.js"></script>
     <script src="/Config/js/custom.js"></script>
+    <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
+    <script src="../Config/plugins/progressbar/progressbar.min.js"></script>
 </body>
 </html>
