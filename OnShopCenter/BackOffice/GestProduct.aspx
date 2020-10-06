@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestUser.aspx.cs" Inherits="OnShopCenter.BackOffice.GestUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestProduct.aspx.cs" Inherits="OnShopCenter.BackOffice.GestProduct" %>
 
 <!DOCTYPE html>
 
@@ -27,10 +27,10 @@
 <body>
     <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
 
-        <div class="ml-5 mt-5">
+        <div class="ml-5">
 
             <div class="row">
-               <%-- <div class="col-12">
+                <div class="col-12">
                     <div class="mt-2">
                         <asp:Label ID="lbl_Erro" runat="server" CssClass="label-input100 text-center" Font-Size="X-Large"></asp:Label>
                     </div>
@@ -94,16 +94,16 @@
                         </div>
                     </div>
 
-                </div>--%>
+                </div>
 
                 <div class="card badge-secondary m-2">
                     <div class="card-body badge-info">
                         <div class="col-12">
-                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound">
+                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                                 <HeaderTemplate>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title">Resellers</h3>
+                                            <h3 class="panel-title">Products</h3>
                                         </div>
                                         <div class="panel-body">
                                             <table class="table table-hover table-responsive table-striped " id="MyTable">
@@ -111,23 +111,20 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>
-                                                            Full Name
+                                                            Product Name
                                                         </th>
                                                         <th>
-                                                            Tax Number
+                                                            Category
                                                         </th>
                                                         <th>
-                                                            Birth date
+                                                            Price
                                                         </th>
                                                         <th>
-                                                            Email
+                                                            Description
                                                         </th>
                                                         <th>
-                                                            Role
-                                                        </th> 
-                                                        <th>
-                                                            Active
-                                                        </th>    
+                                                            Quantity
+                                                        </th>                                                        
                                                         <th>
                                                             <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
                                                         </th>
@@ -139,26 +136,31 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <asp:Label ID="lbl_userId" runat="server" Visible="false"></asp:Label>
+                                                <asp:Label ID="lbl_productId" runat="server" Visible="false"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="fullname" ReadOnly="true"> </asp:TextBox>
+                                                <asp:TextBox runat="server" ID="tproduct_nome" ReadOnly="true"> </asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="taxnumber" ReadOnly="true"> </asp:TextBox>
+                                                <asp:TextBox runat="server" ID="tcategory" ReadOnly="true"> </asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="dateofbirth" ReadOnly="true"> </asp:TextBox>
+                                                <asp:TextBox runat="server" ID="tprice" ReadOnly="true"> </asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="email" ReadOnly="true"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="tdescription" ReadOnly="true"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="role"  ReadOnly="true"> </asp:TextBox>
+                                                <asp:TextBox runat="server" ID="tquantity" TextMode="Number" ReadOnly="true"> </asp:TextBox>
                                             </td>
-                                             <td>
-                                                <asp:CheckBox runat="server" ID="ative" > </asp:CheckBox>
-                                            </td>                                            
+                                            <td>
+                                                <asp:Button ID="btn_save" runat="server" Text="Save" CssClass="btn btn-sm btn-success" CommandName="btn_save" UseSubmitBehavior="false" Visible="false" />
+
+                                                <asp:Button ID="btn_edit" runat="server" Text="Edit" CssClass="btn btn-sm btn-warning" CommandName="btn_edit" UseSubmitBehavior="false" />
+                                            </td>
+                                            <td>
+                                                <asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="btn btn-sm btn-danger" CommandName="btn_delete" UseSubmitBehavior="false" />
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </ItemTemplate>
@@ -170,7 +172,7 @@
                             </div>
                                 </FooterTemplate>
                             </asp:Repeater>
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="ListUserReseller" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="GetProduct" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                         </div>
                     </div>
                 </div>
