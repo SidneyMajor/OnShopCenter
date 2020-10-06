@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackOffice\GestUser.aspx" />
     <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.css" />
     <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.min.css" />
     <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-reboot.css" />
@@ -582,6 +583,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackOffice\GestUser.aspx.cs">
+      <DependentUpon>GestUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\GestUser.aspx.designer.cs">
+      <DependentUpon>GestUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Service.cs" />
     <Compile Include="Home\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -835,7 +843,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BackOffice\" />
     <Folder Include="Config\assets\img\blog\latest-post\" />
     <Folder Include="FrontEnd\" />
   </ItemGroup>
