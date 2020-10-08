@@ -1,13 +1,8 @@
 ﻿using OnShopCenter.Helper;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace OnShopCenter.Home
 {
@@ -18,8 +13,16 @@ namespace OnShopCenter.Home
         private int num_util;
         protected void Page_Load(object sender, EventArgs e)
         {
-             num_util = Convert.ToInt32(Service.DecryptString(Request.QueryString["id"].ToString()));
 
+            if (Request.QueryString["id"] != null)
+            {
+                num_util = Convert.ToInt32(Service.DecryptString(Request.QueryString["id"].ToString()));
+
+            }
+            else
+            {
+                Response.Redirect("NotFound.aspx");
+            }
 
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand = new SqlCommand
@@ -85,7 +88,7 @@ namespace OnShopCenter.Home
             try
             {
                 mycommand.ExecuteNonQuery();
-                int result = Convert.ToInt32(mycommand.Parameters["@retorno"].Value);                
+                int result = Convert.ToInt32(mycommand.Parameters["@retorno"].Value);
                 if (result == 1)
                 {
                     lbl_result.Text = $"Palavra-Passe Alterada com sucesso para o utilizador {resposta}!!";
@@ -97,7 +100,7 @@ namespace OnShopCenter.Home
             }
             catch (Exception ex)
             {
-                lbl_result.Text= ex.Message;
+                lbl_result.Text = ex.Message;
             }
             finally
             {

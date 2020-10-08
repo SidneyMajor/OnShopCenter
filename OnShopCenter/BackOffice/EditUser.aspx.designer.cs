@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnShopCenter.Home
+namespace OnShopCenter.BackOffice
 {
 
 
-    public partial class Register
+    public partial class EditUser
     {
 
         /// <summary>
@@ -24,13 +24,22 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lbl_result control.
+        /// addcart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_result;
+        protected global::System.Web.UI.WebControls.Label addcart;
+
+        /// <summary>
+        /// link control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor link;
 
         /// <summary>
         /// fullname control.
@@ -78,6 +87,15 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlInputText taxnumber;
 
         /// <summary>
+        /// email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl email;
+
+        /// <summary>
         /// phonenumber control.
         /// </summary>
         /// <remarks>
@@ -87,22 +105,22 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlInputText phonenumber;
 
         /// <summary>
-        /// datanasc control.
+        /// dateofbirth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl datanasc;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateofbirth;
 
         /// <summary>
-        /// ddl_profile control.
+        /// ddl_role control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_profile;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_role;
 
         /// <summary>
         /// SqlDataSource1 control.
@@ -114,57 +132,21 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-        /// email control.
+        /// btn_Save control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl email;
+        protected global::System.Web.UI.WebControls.Button btn_Save;
 
         /// <summary>
-        /// password control.
+        /// lbl_result control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
-
-        /// <summary>
-        /// repeat_password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword repeat_password;
-
-        /// <summary>
-        /// CompareValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
-
-        /// <summary>
-        /// btn_signUp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_signUp;
-
-        /// <summary>
-        /// hl_recuperar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hl_recuperar;
+        protected global::System.Web.UI.WebControls.Label lbl_result;
     }
 }

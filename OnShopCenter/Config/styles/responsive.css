@@ -198,7 +198,7 @@
 	}
 	.home_item_side
 	{
-		margin-top: 127px;
+		margin-top: 10px;
 	}
 	.header_content
 	{
@@ -328,7 +328,7 @@
 {
 	.header_content
 	{
-		height: 59px;
+		height: 10px;
 	}
 	.home
 	{
@@ -359,7 +359,7 @@
 	}
 	.home_container
 	{
-		padding-top: 59px;
+		padding-top: 10px;
 	}
 	.home_title,
 	.home_subtitle
@@ -372,7 +372,7 @@
 	}
 	.home_items
 	{
-		margin-top: 40px;
+		margin-top: 10px;
 	}
 	.home_item_large
 	{
@@ -385,7 +385,7 @@
 		width: 170px;
 	    margin-left: auto;
 	    margin-right: auto;
-	    margin-bottom: 30px;
+	    margin-bottom: 10px;
 	}
 	.product_tag
 	{

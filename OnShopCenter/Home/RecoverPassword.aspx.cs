@@ -50,6 +50,7 @@ namespace OnShopCenter.Home
             mycommand.Parameters.Add(valor);
             mycommand.Parameters.Add(valor2);
 
+           
 
             try
             {

@@ -11,7 +11,7 @@ namespace OnShopCenter.Home
 {
 
 
-    public partial class HomePage
+    public partial class ConfirmEmail
     {
 
         /// <summary>
@@ -24,21 +24,12 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// addcart control.
+        /// lbl_mensager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label addcart;
-
-        /// <summary>
-        /// RepeaterProducts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterProducts;
+        protected global::System.Web.UI.WebControls.Label lbl_mensager;
     }
 }

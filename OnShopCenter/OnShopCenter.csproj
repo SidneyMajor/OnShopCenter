@@ -123,7 +123,16 @@
     <Content Include="Config\eCommerceDoc\vendor\select2\select2.js" />
     <Content Include="Config\eCommerceDoc\vendor\select2\select2.min.css" />
     <Content Include="Config\eCommerceDoc\vendor\select2\select2.min.js" />
+    <Content Include="Config\images\add-to-cart.png" />
+    <Content Include="Config\images\Cart-add.png" />
+    <Content Include="Config\images\cart-buy-cart.png" />
+    <Content Include="Config\images\cart.svg" />
+    <Content Include="Config\images\Rato.jpg" />
+    <Content Include="Config\images\shopcart.svg" />
+    <Content Include="Home\CartPage.aspx" />
     <Content Include="Home\ChangePassword.aspx" />
+    <Content Include="BackOffice\EditUser.aspx" />
+    <Content Include="Home\ConfirmEmail.aspx" />
     <Content Include="Home\HomePage.aspx" />
     <Content Include="Home\Login.aspx" />
     <Content Include="Config\assets\css\all.css" />
@@ -496,41 +505,13 @@
     <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeMDUltra.css" />
     <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeMidnight.css" />
     <Content Include="Config\eCommerceDoc\syntax-highlighter\styles\shThemeRDark.css" />
-    <Content Include="Config\images\boxes_1.png" />
-    <Content Include="Config\images\boxes_2.png" />
-    <Content Include="Config\images\box_1.jpg" />
-    <Content Include="Config\images\box_1_img.jpg" />
-    <Content Include="Config\images\box_2.jpg" />
-    <Content Include="Config\images\box_2_img.jpg" />
-    <Content Include="Config\images\box_3.jpg" />
-    <Content Include="Config\images\box_3_img.jpg" />
-    <Content Include="Config\images\cart.svg" />
-    <Content Include="Config\images\cart_2.svg" />
-    <Content Include="Config\images\cart_3.xml" />
-    <Content Include="Config\images\cart_item_1.jpg" />
     <Content Include="Config\images\down.png" />
-    <Content Include="Config\images\heart.svg" />
-    <Content Include="Config\images\heart_2.svg" />
-    <Content Include="Config\images\home.jpg" />
-    <Content Include="Config\images\home_1.jpg" />
-    <Content Include="Config\images\home_2.jpg" />
-    <Content Include="Config\images\home_3.jpg" />
     <Content Include="Config\images\icon_1.svg" />
     <Content Include="Config\images\icon_2.svg" />
     <Content Include="Config\images\icon_3.svg" />
     <Content Include="Config\images\logo_1.png" />
     <Content Include="Config\images\logo_2.png" />
     <Content Include="Config\images\phone.svg" />
-    <Content Include="Config\images\product_1.jpg" />
-    <Content Include="Config\images\product_2.jpg" />
-    <Content Include="Config\images\product_3.jpg" />
-    <Content Include="Config\images\product_4.jpg" />
-    <Content Include="Config\images\product_5.jpg" />
-    <Content Include="Config\images\product_6.jpg" />
-    <Content Include="Config\images\product_7.jpg" />
-    <Content Include="Config\images\product_8.jpg" />
-    <Content Include="Config\images\product_9.jpg" />
-    <Content Include="Config\images\product_image_1.jpg" />
     <Content Include="Config\images\search.png" />
     <Content Include="Config\images\user.svg" />
     <Content Include="Config\images\view_1.png" />
@@ -598,13 +579,36 @@
     <Compile Include="BackOffice\GestUser.aspx.designer.cs">
       <DependentUpon>GestUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helper\OrderDetailsTemp.cs" />
+    <Compile Include="Helper\Product.cs" />
     <Compile Include="Helper\Service.cs" />
+    <Compile Include="Helper\User.cs" />
+    <Compile Include="Home\CartPage.aspx.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\CartPage.aspx.designer.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\EditUser.aspx.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\EditUser.aspx.designer.cs">
+      <DependentUpon>EditUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\ConfirmEmail.aspx.cs">
+      <DependentUpon>ConfirmEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\ConfirmEmail.aspx.designer.cs">
+      <DependentUpon>ConfirmEmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>

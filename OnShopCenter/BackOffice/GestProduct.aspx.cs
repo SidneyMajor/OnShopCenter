@@ -27,7 +27,7 @@ namespace OnShopCenter.BackOffice
 
             byte[] fileBinaryData = new byte[fileLength];
 
-            int n = fileStream.Read(fileBinaryData, 0, fileLength);
+            int nb = fileStream.Read(fileBinaryData, 0, fileLength);
 
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand = new SqlCommand

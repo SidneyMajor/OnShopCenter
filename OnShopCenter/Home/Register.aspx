@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                                        <input class="input101" type="text" name="email" placeholder="Email: ex@abc.xyz" id="email" runat="server" />
+                                        <input class="input101" type="email" name="email" placeholder="Email: ex@abc.xyz" id="email" runat="server" />
                                         <span class="focus-input100"></span>
                                     </div>
                                 </div>
@@ -144,6 +144,7 @@
                                 <a href="Login.aspx" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Sign in
 							        <i class="fa fa-long-arrow-right m-l-5"></i>
                                 </a>
+                                <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
                             </div>
                         </div>
                     </div>

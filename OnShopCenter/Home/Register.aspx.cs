@@ -40,16 +40,7 @@ namespace OnShopCenter.Home
             mycommand.Parameters.AddWithValue("@gender", ddl_gender.SelectedItem.Text);
             mycommand.Parameters.AddWithValue("@pw", Service.EncryptString(password.Value));
             mycommand.Parameters.AddWithValue("@email", email.Value);
-
-            if (ddl_profile.SelectedItem.Text=="Reseller")
-            {
-                mycommand.Parameters.AddWithValue("@ativo",0);
-            }
-            else
-            {
-
-                mycommand.Parameters.AddWithValue("@ativo", 1);
-            }
+            
 
             //Creat parameter output
             SqlParameter valor = new SqlParameter
@@ -59,20 +50,44 @@ namespace OnShopCenter.Home
                 SqlDbType = SqlDbType.Int,
                 Size = 1
             };
+
+            SqlParameter valor2 = new SqlParameter
+            {
+                ParameterName = "@retorno_num",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+                Size = 6
+            };
             //add parameter output
             mycommand.Parameters.Add(valor);
+            mycommand.Parameters.Add(valor2);
             myConn.Open();
             try
             {
 
                 mycommand.ExecuteNonQuery();
-                int resposta = Convert.ToInt32(mycommand.Parameters["@retorno"].Value);               
+                int resposta = Convert.ToInt32(mycommand.Parameters["@retorno"].Value);
+                int resposta_num = Convert.ToInt32(mycommand.Parameters["@retorno_num"].Value);
                 if (resposta == 1)
                 {
                     lbl_result.Visible = true;
                     lbl_result.ForeColor = Color.Green;
                     lbl_result.Text = "Utilizador adicionado com sucesso";
-                    string htmltext = "O seu registo foi efetuado com sucesso. Caso se registou como revendedor aguarde pela confirmação da administração.";
+
+                    string htmltext = string.Empty;
+
+                    if (ddl_profile.SelectedItem.Text=="Customer")
+                    {
+                        hl_recuperar.NavigateUrl = "https://localhost:44383/Home/ConfirmEmail.aspx?id=" + Service.EncryptString(resposta_num.ToString());
+
+                        htmltext = "O seu registo foi efetuado com sucesso.\n " +
+                           $"Para confimar a sua conta <a href=\"{hl_recuperar.NavigateUrl}\">Clique aqui</a>"; 
+                    }
+                    else
+                    {
+                        htmltext = "O seu registo foi efetuado com sucesso. Caso se registou como revendedor aguarde pela confirmação da administração.";
+                    }
+                   
                     Service.Send("Bemvindo ao On Shop Center",htmltext, email.Value);
                 }
                 else

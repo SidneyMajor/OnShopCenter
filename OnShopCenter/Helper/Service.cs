@@ -136,5 +136,10 @@ namespace OnShopCenter.Helper
             sc.EnableSsl = true;
             sc.Send(m);
         }
+
+        public static List<OrderDetailsTemp> OrdersTemp(List<OrderDetailsTemp> orderDetailsTemps)
+        {
+            return orderDetailsTemps;
+        }
     }
 }

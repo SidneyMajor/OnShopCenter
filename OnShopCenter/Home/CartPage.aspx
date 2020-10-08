@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="OnShopCenter.Home.HomePage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CartPage.aspx.cs" Inherits="OnShopCenter.Home.CartPage" %>
 
 <!DOCTYPE html>
 
@@ -14,25 +14,24 @@
     <link rel="icon" type="image/png" href="/Config/eCommerceDoc/images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/bootstrap-4.1.2/bootstrap.min.css" />
     <link href="/Config/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/Config/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />
-    <link rel="stylesheet" type="text/css" href="/Config/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />
-    <link rel="stylesheet" type="text/css" href="/Config/plugins/OwlCarousel2-2.2.1/animate.css" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Config/styles/cart.css" />
+    <link rel="stylesheet" type="text/css" href="/Config/styles/cart_responsive.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/main_styles.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/responsive.css" />
     <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-
-       
-
         <div class="super_container">
 
             <!-- Header -->
 
+
+
             <header class="header">
                 <div class="header_overlay"></div>
-                <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                <div class="d-flex flex-row align-items-center justify-content-start">
                     <div class="logo">
                         <a href="#">
                             <div class="d-flex flex-row align-items-center justify-content-start">
@@ -44,24 +43,9 @@
                         </a>
                     </div>
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    <%-- <nav class="main_nav">
-                        <ul class="d-flex flex-row align-items-start justify-content-start">
-                            <li class="active"><a href="#">Women</a></li>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Home Deco</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </nav>--%>
+
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
-                        <!-- Search -->
-                        <%--  <div class="header_search">
-                            <div id="header_search_form">
-                                <input type="text" class="search_input" placeholder="Search Item" required="required" />
-                                <button class="header_search_button">
-                                    <img src="/Config/images/search.png" alt="" /></button>
-                            </div>
-                        </div>--%>
+
                         <!-- User -->
                         <div class="user">
                             <a href="/CommunPages/Login.aspx">
@@ -72,10 +56,11 @@
                         </div>
                         <!-- Cart -->
                         <div class="cart  user">
-                            <a href="CartPage.aspx">
+                            <a href="#">
                                 <div>
                                     <img class="svg" src="/Config/images/cart.svg" alt="https://www.flaticon.com/authors/freepik" /><div>
-                                        <asp:Label ID="addcart" Text="0" runat="server"></asp:Label></div>
+                                        <asp:Label ID="addcart" Text="0" runat="server"></asp:Label>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -94,112 +79,111 @@
 
             <div class="super_container_inner">
                 <div class="super_overlay"></div>
-                <!-- Products -->
 
-                <div class="products">
-                    <div class="container">
-                        <div class="row products_row">
-                            <asp:Repeater ID="RepeaterProducts" runat="server" OnItemCommand="RepeaterProducts_ItemCommand" OnItemDataBound="RepeaterProducts_ItemDataBound">
-                                <ItemTemplate>
+                <div class="mt-10 badge-dark">
+                    <div class="home_container d-flex flex-column align-items-center justify-content-end">
+                        <div class="text-center">
+                            <div class="home_title">Shopping Cart</div>
 
-                                    <!-- Product -->
-                                    <div class="col-xl-4 col-md-6 ">
-                                        <div class="product m-4">
-                                            <div class="product_image">
-                                                <div class="card-header badge-secondary">
-                                                    <img src="/Config/images/Rato.jpg" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                                    <div>
-                                                        <div>
-                                                            <div class="product_name"><a href="product.html"><%# Eval("ProductName") %></a></div>
-                                                            <div class="product_category"><%# Eval("Description") %></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ml-auto text-right">
-                                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                        <div class="product_price text-right">€<span><%# Eval("Price") %></span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product_buttons">
-                                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                                        <div class="text-right d-flex flex-column align-items-center justify-content-start">
-                                                            <div>
-                                                                <div class="text-capitalize text-dark"><%# Eval("Category") %></div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="product_button product_cart d-flex flex-column align-items-start justify-content-center">
-                                                            <div>
-                                                                <div>
-                                                                    <asp:Button ID="btn_cart" runat="server" CssClass="btn btn-success btn-block product_button" UseSubmitBehavior="false" CommandName="btn_cart" Text="Add" Width="20" /><div>+</div>
-                                                                    <%--<img src="/Config/images/cart.svg" class="svg" alt="" id="cart"  runat="server" /><%--<div>+</div>--%>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </ItemTemplate>
-                            </asp:Repeater>
                         </div>
                     </div>
                 </div>
+                <!-- Cart -->
 
-                <!-- Features -->
-
-                <div class="features">
+                <div class="cart_section">
                     <div class="container">
                         <div class="row">
+                            <div class="col">
+                                <div class="cart_container">
+                                    <asp:Repeater ID="RepeaterOrder" runat="server">
+                                        <HeaderTemplate>
+                                            <!-- Cart Bar -->
+                                            <div class="cart_bar">
+                                                <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+                                                    <li class="mr-auto">Product</li>
+                                                    <li>Product</li>
+                                                    <li>Category</li>
+                                                    <li>Price</li>
+                                                    <li>Quantity</li>
+                                                    <li>Total</li>
+                                                </ul>
+                                            </div>
+                                        </HeaderTemplate>
 
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon">
-                                            <img src="/Config/images/icon_1.svg" alt="" />
-                                        </div>
+                                        <ItemTemplate>
+                                                                                <!-- Cart Items -->
+                                    <div class="cart_items">
+                                        <ul class="cart_items_list">
+
+                                            <!-- Cart Item -->
+                                            <li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+                                                <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                                                    <div>
+                                                        <div class="product_number">1</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="product_image">
+                                                            <img src="../Config/images/Rato.jpg" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_name_container">
+                                                        <div class="product_name">Nome do produto</div>
+                                                        <div class="product_text">Descrição do produto</div>
+                                                    </div>
+                                                </div>
+                                                <div class="product_color product_text"><span>Color: </span>beige</div>
+                                                <div class="product_size product_text"><span>Size: </span>L</div>
+                                                <div class="product_price product_text"><span>Price: </span>$3.99</div>
+                                                <div class="product_quantity_container">
+                                                    <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+                                                        <span class="product_text product_num">1</span>
+                                                        <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
+                                                        <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="product_total product_text"><span>Total: </span>$3.99</div>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Fast Secure Payments</div>
+                                        </ItemTemplate>
+
+                                        <FooterTemplate>
+                                            <!-- Cart Buttons -->
+                                            <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+                                                <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                                    <div class="button button_clear trans_200"><a href="#">clear cart</a></div>
+                                                    <div class="button button_continue trans_200"><a href="#">continue shopping</a></div>
+                                                </div>
+                                            </div>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row cart_extra_row">
+
+                            <div class="col-lg-6 cart_extra_col">
+                                <div class="cart_extra cart_extra_2">
+                                    <div class="cart_extra_content cart_extra_total">
+                                        <div class="cart_extra_title">Cart Total</div>
+                                        <ul class="cart_extra_total_list">
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="cart_extra_total_title">Subtotal</div>
+                                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="cart_extra_total_title">Shipping</div>
+                                                <div class="cart_extra_total_value ml-auto">Free</div>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="cart_extra_total_title">Total</div>
+                                                <div class="cart_extra_total_value ml-auto">$29.90</div>
+                                            </li>
+                                        </ul>
+                                        <div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon ml-auto mr-auto">
-                                            <img src="/Config/images/icon_2.svg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Premium Products</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon">
-                                            <img src="/Config/images/icon_3.svg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Free Delivery</div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -269,7 +253,6 @@
             </div>
 
         </div>
-
     </form>
 
     <script src="/Config/js/jquery-3.2.1.min.js"></script>
@@ -287,5 +270,6 @@
     <script src="/Config/js/custom.js"></script>
     <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
     <script src="../Config/plugins/progressbar/progressbar.min.js"></script>
+    <script src="/Config/js/cart.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 ﻿using OnShopCenter.Helper;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,7 +14,7 @@ namespace OnShopCenter.BackOffice
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BindigRepeaterUsers();
         }
 
         //protected void btn_Save_Click(object sender, EventArgs e)
@@ -167,17 +168,115 @@ namespace OnShopCenter.BackOffice
             for (int i = 0; i < Repeater1.Items.Count; i++)
             {
                 query += "UPDATE myUser SET ";
-                query += "ativo='" + ((CheckBox)Repeater1.Items[i].FindControl("ative")).Checked + "' ";                
-                query += "WHERE userId=" + ((Label)Repeater1.Items[i].FindControl("lbl_userId")).Text + ";";
+                query += "ativo='" + ((CheckBox)Repeater1.Items[i].FindControl("ative")).Checked + "' ";
+                query += "WHERE userId=" + ((Label)Repeater1.Items[i].FindControl("lbl_userId")).Text + ";";                
 
-                Service.Send("Confimação de Conta",$"Caro cliente <b>{((TextBox)Repeater1.Items[i].FindControl("fullname")).Text}</b> a sua conta esta confirmada como revendedor.", ((TextBox)Repeater1.Items[i].FindControl("email")).Text);
-                //((Button)Repeater1.Items[i].FindControl("btn_save")).Visible = false;
-                //((Button)Repeater1.Items[i].FindControl("btn_edit")).Visible = true;
+
+                hl_recuperar.NavigateUrl = "https://localhost:44383/Home/HomePage.aspx";
+
+                string htmltext = $"Caro cliente <b>{((TextBox)Repeater1.Items[i].FindControl("fullname")).Text}</b> a sua conta esta confirmada como revendedor." +
+                   $"Coemeçe a sua compara <a href=\"{hl_recuperar.NavigateUrl}\">Clique aqui</a>";
+
+
+                Service.Send("Confimação de Conta", htmltext, ((TextBox)Repeater1.Items[i].FindControl("email")).Text);
+
             }
 
             SqlCommand myCommand = new SqlCommand(query, myConn);
             myCommand.ExecuteNonQuery();
             myConn.Close();
+        }
+
+
+        private void BindigRepeaterUsers()
+        {
+            /*string query = " select Product.productId, Product.productName,Product.price, Product.description,Product.quantity," +
+                "Category.description from Product inner join Category on Category.categoryId = Product.categoryId " +
+                "order by Product.productName";*/
+            List<User> users = new List<User>();
+
+            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+            SqlCommand mycommand = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "ListUserCustumer",
+
+                Connection = myConn
+            };
+
+            myConn.Open();
+
+
+            var reader = mycommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                users.Add(new User
+                {
+                    UserId = reader.GetInt32(0),
+                    FullName = reader.GetString(1),
+                    TaxNumber = reader.GetString(2),
+                    DateOfBirth = reader.GetDateTime(3).ToShortDateString(),
+                    Email = reader.GetString(4),
+                    IsActive = reader.GetBoolean(5),
+                    RoleName = reader.GetString(6)
+                });
+            }
+
+            reader.Close();
+            myConn.Close();
+
+
+            RepeaterUsers.DataSource = users;
+            RepeaterUsers.DataBind();
+        }
+
+
+
+        protected void RepeaterUsers_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                User dr = (User)e.Item.DataItem;
+
+                ((Button)e.Item.FindControl("btn_edit")).CommandArgument = dr.UserId.ToString();
+                ((Button)e.Item.FindControl("btn_delete")).CommandArgument = dr.UserId.ToString();
+
+            }
+        }
+
+
+
+        protected void RepeaterUsers_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            string queryApaga = "delete from myUser";
+            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+
+            if (e.CommandName.Equals("btn_edit"))
+            {
+                Session["userId"] = ((Button)e.Item.FindControl("btn_edit")).CommandArgument;
+                Response.Redirect("EditUser.aspx");
+            }
+
+            if (e.CommandName.Equals("btn_delete"))
+            {
+                try
+                {
+
+                    queryApaga += "WHERE userId=" + ((Button)e.Item.FindControl("btn_delete")).CommandArgument;
+
+                    SqlCommand myCommand = new SqlCommand(queryApaga, myConn);
+                    myCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("Error to delete user. " + ex.Message);
+                }
+                finally
+                {
+                    myConn.Close();
+                }
+            }
         }
     }
 }

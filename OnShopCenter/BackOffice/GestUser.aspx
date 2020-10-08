@@ -28,106 +28,34 @@
     <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
 
         <div class="ml-5 mt-5">
-
             <div class="row">
-               <%-- <div class="col-12">
-                    <div class="mt-2">
-                        <asp:Label ID="lbl_Erro" runat="server" CssClass="label-input100 text-center" Font-Size="X-Large"></asp:Label>
-                    </div>
-                    <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Insert Product
-                    </button>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="collapse validate-form" id="collapseExample">
-                                <div class="card card-body">
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Product Name" aria-label="ProductName" aria-describedby="basic-addon1" runat="server" id="productname" required="required" />
-                                    </div>
-
-
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon2">Category</span>
-                                        </div>
-                                        <asp:DropDownList ID="ddl_category" runat="server" CssClass="form-control" aria-label="Category" aria-describedby="basic-addon2" required="required" DataSourceID="SqlDataSource1" DataTextField="description" DataValueField="categoryId"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon3">€</span>
-                                        </div>
-                                        <input type="number" class="form-control" step="0.01" placeholder="0.00" aria-label="Price" aria-describedby="basic-addon3" runat="server" id="price" required="required" />
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon4"></span>
-                                        </div>
-                                        <input type="text" aria-multiline="true" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="basic-addon4" runat="server" id="description" />
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon5">#</span>
-                                        </div>
-                                        <input type="number" class="form-control" step="1" placeholder="0" aria-label="Quantity" aria-describedby="basic-addon5" runat="server" id="quantity" />
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon6">Image</span>
-                                        </div>
-                                        <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" class="form-control figure-img" aria-describedby="basic-addon6" />
-                                    </div>
-
-                                    <asp:Button ID="btn_Save" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btn_Save_Click" />
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>--%>
-
                 <div class="card badge-secondary m-2">
                     <div class="card-body badge-info">
                         <div class="col-12">
+                            <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
                             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound">
                                 <HeaderTemplate>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title">Resellers</h3>
+                                            <h3 class="panel-title text-warning">Resellers Pending</h3>
                                         </div>
                                         <div class="panel-body">
                                             <table class="table table-hover table-responsive table-striped " id="MyTable">
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th>
-                                                            Full Name
+                                                        <th>Full Name
                                                         </th>
-                                                        <th>
-                                                            Tax Number
+                                                        <th>Tax Number
                                                         </th>
-                                                        <th>
-                                                            Birth date
+                                                        <th>Birth date
                                                         </th>
-                                                        <th>
-                                                            Email
+                                                        <th>Email
                                                         </th>
-                                                        <th>
-                                                            Role
-                                                        </th> 
-                                                        <th>
-                                                            Active
-                                                        </th>    
+                                                        <th>Role
+                                                        </th>
+                                                        <th>Active
+                                                        </th>
                                                         <th>
                                                             <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
                                                         </th>
@@ -154,11 +82,11 @@
                                                 <asp:TextBox runat="server" ID="email" ReadOnly="true"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox runat="server" ID="role"  ReadOnly="true"> </asp:TextBox>
+                                                <asp:TextBox runat="server" ID="role" ReadOnly="true"> </asp:TextBox>
                                             </td>
-                                             <td>
-                                                <asp:CheckBox runat="server" ID="ative" > </asp:CheckBox>
-                                            </td>                                            
+                                            <td>
+                                                <asp:CheckBox runat="server" ID="ative"></asp:CheckBox>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </ItemTemplate>
@@ -174,6 +102,81 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card badge-secondary m-2">
+                    <div class="card-body badge-info">
+                        <div class="col-12">
+                            <asp:Repeater ID="RepeaterUsers" runat="server" OnItemCommand="RepeaterUsers_ItemCommand" OnItemDataBound="RepeaterUsers_ItemDataBound">
+                                <HeaderTemplate>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title text-warning">All Customer</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table class="table table-hover table-responsive table-striped " id="MyTable2">
+                                                <thead>
+                                                    <tr>                                                        
+                                                        <th>Full Name
+                                                        </th>
+                                                        <th>Tax Number
+                                                        </th>
+                                                        <th>Birth date
+                                                        </th>
+                                                        <th>Email
+                                                        </th>
+                                                        <th>Role
+                                                        </th>
+                                                        <th>IsActive?
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                </HeaderTemplate>
+
+                                <ItemTemplate>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <%# Eval("FullName") %>
+                                            </td>
+                                            <td>
+                                                <%# Eval("TaxNumber") %>
+                                            </td>
+                                            <td>
+                                                <%# Eval("DateOfBirth").ToString() %>
+                                            </td>
+                                            <td>
+                                                <%# Eval("Email") %>
+                                            </td>
+                                            <td>
+                                                <%# Eval("RoleName") %>
+                                            </td>
+                                            <td>
+                                                <%# Eval("IsActive") %>
+                                            </td>
+                                            <td>
+                                                <asp:Button ID="btn_edit" runat="server" Text="Edit" CssClass="btn btn-sm btn-warning" CommandName="btn_edit" UseSubmitBehavior="false"/>
+                                            </td>
+                                            <td>
+                                                <asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="btn btn-sm btn-danger" CommandName="btn_delete" UseSubmitBehavior="false" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </ItemTemplate>
+
+                                <FooterTemplate>
+                                    </table>
+                         
+                               </div>
+                            </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
             </div>
         </div>
@@ -203,6 +206,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MyTable').DataTable();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable2').DataTable();
         });
     </script>
 </body>
