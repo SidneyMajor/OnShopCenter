@@ -34,7 +34,7 @@
                 <div class="header_overlay"></div>
                 <div class="header_content d-flex flex-row align-items-center justify-content-start">
                     <div class="logo">
-                        <a href="#">
+                        <a href="HomePage.aspx">
                             <div class="d-flex flex-row align-items-center justify-content-start">
                                 <div>
                                     <img src="/Config/images/logo_1.png" alt="" />
@@ -75,7 +75,7 @@
                             <a href="CartPage.aspx">
                                 <div>
                                     <img class="svg" src="/Config/images/cart.svg" alt="https://www.flaticon.com/authors/freepik" /><div>
-                                        <asp:Label ID="addcart" Text="0" runat="server"></asp:Label></div>
+                                        <asp:Label ID="numItemInCart" Text="0" runat="server"></asp:Label></div>
                                 </div>
                             </a>
                         </div>
@@ -125,16 +125,16 @@
                                                 </div>
                                                 <div class="product_buttons">
                                                     <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                                        <div class="text-right d-flex flex-column align-items-center justify-content-start">
+                                                        <div class="text-right d-flex flex-column align-items-center justify-content-center">
                                                             <div>
                                                                 <div class="text-capitalize text-dark"><%# Eval("Category") %></div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="product_button product_cart d-flex flex-column align-items-start justify-content-center">
+                                                        
+                                                        <div class="card-footer product_button">
                                                             <div>
                                                                 <div>
-                                                                    <asp:Button ID="btn_cart" runat="server" CssClass="btn btn-success btn-block product_button" UseSubmitBehavior="false" CommandName="btn_cart" Text="Add" Width="20" /><div>+</div>
+                                                                    <asp:Button ID="btn_cart" runat="server" CssClass="btn btn-success btn-block w-100 border-0 text-dark" UseSubmitBehavior="false" CommandName="btn_cart" Text="Add" BackColor="Transparent"/><div>+</div>
                                                                     <%--<img src="/Config/images/cart.svg" class="svg" alt="" id="cart"  runat="server" /><%--<div>+</div>--%>
                                                                 </div>
                                                             </div>

@@ -254,7 +254,7 @@ namespace OnShopCenter.BackOffice
 
             if (e.CommandName.Equals("btn_edit"))
             {
-                Session["userId"] = ((Button)e.Item.FindControl("btn_edit")).CommandArgument;
+                Session["edituserId"] = ((Button)e.Item.FindControl("btn_edit")).CommandArgument;
                 Response.Redirect("EditUser.aspx");
             }
 

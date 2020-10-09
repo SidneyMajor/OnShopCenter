@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace OnShopCenter.Home
@@ -21,6 +17,53 @@ namespace OnShopCenter.Home
         protected void Page_Load(object sender, EventArgs e)
         {
             BindigRepeaterProducts();
+            if (Session["userlogin"] != null)
+            {
+                var id = Convert.ToInt32(Session["userId"].ToString());
+                CheckCart(id);
+            }
+
+        }
+
+        private void CheckCart(int id)
+        {
+            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+            SqlCommand mycommand = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "CheckCart",
+
+                Connection = myConn
+            };
+
+            mycommand.Parameters.AddWithValue("@userId", id);
+
+            SqlParameter valor = new SqlParameter
+            {
+                ParameterName = "@retorno",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+                Size = 6
+            };
+            //add parameter output
+            mycommand.Parameters.Add(valor);
+
+            try
+            {
+                myConn.Open();
+                mycommand.ExecuteNonQuery();
+                numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+
         }
 
         private void BindigRepeaterProducts()
@@ -44,15 +87,15 @@ namespace OnShopCenter.Home
 
             var reader = mycommand.ExecuteReader();
 
-            while (reader.Read()) 
+            while (reader.Read())
             {
                 Products.Add(new Product
                 {
-                    ProductId=reader.GetInt32(0),
-                    ProductName=reader.GetString(1),
-                    Price=reader.GetSqlMoney(2),
-                    Description=reader.GetString(3),
-                    Category=reader.GetString(5)
+                    ProductId = reader.GetInt32(0),
+                    ProductName = reader.GetString(1),
+                    Price = reader.GetSqlMoney(2),
+                    Description = reader.GetString(3),
+                    Category = reader.GetString(5)
                 });
             }
 
@@ -66,41 +109,63 @@ namespace OnShopCenter.Home
 
         protected void RepeaterProducts_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            int n = Convert.ToInt32(addcart.Text);
+
             if (e.CommandName.Equals("btn_cart"))
             {
+                //if (Session["userlogin"] == null)
+                //{
+                //    Response.Redirect("../Home/Login.aspx");
+                //}
                 foreach (var item in Products)
                 {
-                    if (item.ProductId.ToString()== ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
+                    if (item.ProductId.ToString() == ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
                     {
-                       
-                        OrderDetailsTemp orderDetails = new OrderDetailsTemp
+                        SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+                        SqlCommand mycommand = new SqlCommand
                         {
-                            ProductId =item.ProductId,
-                            ProductName=item.ProductName,
-                            Category=item.Category,
-                            Price=item.Price,
-                            Description=item.Description,
-                            Quantity=1,                            
+                            CommandType = CommandType.StoredProcedure,
+                            CommandText = "AddProduct",
+
+                            Connection = myConn
                         };
 
-                        if (OrderDetailsTemps.Where(o=>o.ProductId==orderDetails.ProductId).FirstOrDefault()==null)
+                        mycommand.Parameters.AddWithValue("@userId", 1);
+                        //mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
+                        mycommand.Parameters.AddWithValue("@productId", item.ProductId);
+                        mycommand.Parameters.AddWithValue("@price", item.Price);
+                        mycommand.Parameters.AddWithValue("@quantity", 1);
+
+                        SqlParameter valor = new SqlParameter
                         {
-                            OrderDetailsTemps.Add(orderDetails);
-                            n += 1;
-                            addcart.Text = n.ToString();
-                        }
-                        else
+                            ParameterName = "@retorno",
+                            Direction = ParameterDirection.Output,
+                            SqlDbType = SqlDbType.Int,
+                            Size = 6
+                        };
+                        //add parameter output
+                        mycommand.Parameters.Add(valor);
+
+                        try
                         {
-                            OrderDetailsTemps.Where(o => o.ProductId == orderDetails.ProductId).FirstOrDefault().Quantity += 1;
+                            myConn.Open();
+                            mycommand.ExecuteNonQuery();
+                            numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
                         }
-                       
+                        catch (Exception)
+                        {
+
+                        }
+                        finally
+                        {
+                            myConn.Close();
+                        }
+
                     }
                 }
 
-                
+
             }
-            Session["usercart"]=OrderDetailsTemps;
+            //Session["usercart"]=OrderDetailsTemps;
         }
 
         protected void RepeaterProducts_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -114,6 +179,6 @@ namespace OnShopCenter.Home
             }
         }
 
-      
+
     }
 }

@@ -31,9 +31,9 @@
 
             <header class="header">
                 <div class="header_overlay"></div>
-                <div class="d-flex flex-row align-items-center justify-content-start">
+                <div class="header_content d-flex flex-row align-items-center justify-content-start">
                     <div class="logo">
-                        <a href="#">
+                        <a href="HomePage.aspx">
                             <div class="d-flex flex-row align-items-center justify-content-start">
                                 <div>
                                     <img src="/Config/images/logo_1.png" alt="" />
@@ -56,11 +56,10 @@
                         </div>
                         <!-- Cart -->
                         <div class="cart  user">
-                            <a href="#">
+                            <a href="CartPage.aspx">
                                 <div>
                                     <img class="svg" src="/Config/images/cart.svg" alt="https://www.flaticon.com/authors/freepik" /><div>
-                                        <asp:Label ID="addcart" Text="0" runat="server"></asp:Label>
-                                    </div>
+                                        <asp:Label ID="numItemInCart" Text="0" runat="server"></asp:Label></div>
                                 </div>
                             </a>
                         </div>
@@ -101,7 +100,6 @@
                                             <div class="cart_bar">
                                                 <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
                                                     <li class="mr-auto">Product</li>
-                                                    <li>Product</li>
                                                     <li>Category</li>
                                                     <li>Price</li>
                                                     <li>Quantity</li>
@@ -111,48 +109,48 @@
                                         </HeaderTemplate>
 
                                         <ItemTemplate>
-                                                                                <!-- Cart Items -->
-                                    <div class="cart_items">
-                                        <ul class="cart_items_list">
+                                            <!-- Cart Items -->
+                                            <div class="cart_items">
+                                                <ul class="cart_items_list">
 
-                                            <!-- Cart Item -->
-                                            <li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
-                                                <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
-                                                    <div>
-                                                        <div class="product_number">1</div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="product_image">
-                                                            <img src="../Config/images/Rato.jpg" alt="" />
+                                                    <!-- Cart Item -->
+                                                    <li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+                                                        <div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                                                            <div>
+                                                                <div class="product_number">#<%# (ProductNumber+=1).ToString()%></div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="product_image">
+                                                                    <img src="../Config/images/Rato.jpg" alt="" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="product_name_container">
+                                                                <div class="product_name"><%# Eval("ProductName") %></div>
+                                                                <div class="product_text"><%# Eval("Description") %></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="product_name_container">
-                                                        <div class="product_name">Nome do produto</div>
-                                                        <div class="product_text">Descrição do produto</div>
-                                                    </div>
-                                                </div>
-                                                <div class="product_color product_text"><span>Color: </span>beige</div>
-                                                <div class="product_size product_text"><span>Size: </span>L</div>
-                                                <div class="product_price product_text"><span>Price: </span>$3.99</div>
-                                                <div class="product_quantity_container">
-                                                    <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
-                                                        <span class="product_text product_num">1</span>
-                                                        <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
-                                                        <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product_total product_text"><span>Total: </span>$3.99</div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                        <div class="product_size product_text"><span>Category: </span><%# Eval("Category") %></div>
+                                                        <div class="product_price  product_text"><span>Price: </span>€<%# Eval("Price") %></div>
+                                                        <div class="product_quantity_container">
+                                                            <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+                                                                <span class="product_text product_num" runat="server"><%# Eval("Quantity") %></span>
+                                                                <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
+                                                                <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_total product_text"><span>Total: </span>€ <%# Eval("Total") %></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </ItemTemplate>
 
                                         <FooterTemplate>
                                             <!-- Cart Buttons -->
                                             <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
                                                 <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-                                                    <div class="button button_clear trans_200"><a href="#">clear cart</a></div>
-                                                    <div class="button button_continue trans_200"><a href="#">continue shopping</a></div>
+                                                    <div>
+                                                        <asp:Button ID="btn_clearCart" runat="server" Text="clear cart" CssClass=" btn btn-warning trans_200 mr-4 text-uppercase text-white font-weight-bold" UseSubmitBehavior="false" OnClick="btn_clearCart_Click" /></div>
+                                                    <div><a href="HomePage.aspx" class="btn btn-secondary trans_200">Continue shopping</a></div>
                                                 </div>
                                             </div>
                                         </FooterTemplate>
@@ -160,30 +158,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row cart_extra_row">
+                        <div class="container ">
+                            <div class="row cart_extra_row d-flex flex-column align-content-end justify-content-end">
 
-                            <div class="col-lg-6 cart_extra_col">
-                                <div class="cart_extra cart_extra_2">
-                                    <div class="cart_extra_content cart_extra_total">
-                                        <div class="cart_extra_title">Cart Total</div>
-                                        <ul class="cart_extra_total_list">
-                                            <li class="d-flex flex-row align-items-center justify-content-start">
-                                                <div class="cart_extra_total_title">Subtotal</div>
-                                                <div class="cart_extra_total_value ml-auto">$29.90</div>
-                                            </li>
-                                            <li class="d-flex flex-row align-items-center justify-content-start">
-                                                <div class="cart_extra_total_title">Shipping</div>
-                                                <div class="cart_extra_total_value ml-auto">Free</div>
-                                            </li>
-                                            <li class="d-flex flex-row align-items-center justify-content-start">
-                                                <div class="cart_extra_total_title">Total</div>
-                                                <div class="cart_extra_total_value ml-auto">$29.90</div>
-                                            </li>
-                                        </ul>
-                                        <div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
+                                <div class="col-lg-6 cart_extra_col">
+                                    <div class="cart_extra cart_extra_2">
+                                        <div class="cart_extra_content cart_extra_total">
+                                            <div class="cart_extra_title">Cart Total</div>
+                                            <ul class="cart_extra_total_list">
+                                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                                    <div class="cart_extra_total_title">Subtotal</div>
+                                                    <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_sub" runat="server"></asp:Label></div>
+                                                </li>
+                                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                                    <div class="cart_extra_total_title">Shipping</div>
+                                                    <div class="cart_extra_total_value ml-auto">Free</div>
+                                                </li>
+                                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                                    <div class="cart_extra_total_title">Total</div>
+                                                    <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_total" runat="server"></asp:Label></</div>
+                                                </li>
+                                            </ul>
+                                            <div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -271,5 +272,7 @@
     <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
     <script src="../Config/plugins/progressbar/progressbar.min.js"></script>
     <script src="/Config/js/cart.js"></script>
+
+
 </body>
 </html>

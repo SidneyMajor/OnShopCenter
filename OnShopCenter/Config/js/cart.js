@@ -179,6 +179,7 @@ $(document).ready(function()
 							newValue = original - 1;
 						}
 					num.text(newValue);
+					
 				});
 
 				add.on('click', function()

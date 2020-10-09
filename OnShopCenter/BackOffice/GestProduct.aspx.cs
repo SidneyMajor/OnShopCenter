@@ -86,6 +86,8 @@ namespace OnShopCenter.BackOffice
             {
                 myConn.Close();
             }
+
+            Response.Redirect("GestProduct.aspx");
         }
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)

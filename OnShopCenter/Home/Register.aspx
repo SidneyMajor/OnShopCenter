@@ -105,7 +105,11 @@
                                     <div class="wrap-input100 validate-input" data-validate="Type of profile is required">
                                         <span class="label-input100">Type of profile</span>
                                         <asp:DropDownList ID="ddl_profile" runat="server" CssClass="dropdown-item" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole] WHERE ([roleName] NOT LIKE '%' + @roleName + '%')">
+                                            <SelectParameters>
+                                                <asp:Parameter DefaultValue="Admin" Name="roleName" Type="String" />
+                                            </SelectParameters>
+                                        </asp:SqlDataSource>
                                         <span class="focus-input100"></span>
                                     </div>
                                 </div>

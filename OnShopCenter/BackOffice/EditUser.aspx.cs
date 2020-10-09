@@ -23,11 +23,11 @@ namespace OnShopCenter.BackOffice
 
             if (!IsPostBack)
             {
-                if (Session["userId"] != null)
+                if (Session["edituserId"] != null)
                 {
                     //var d = DateTime.Now.ToString("yyyy-MM-dd");
                     //dateofbirth.Value = d;
-                    var id = Convert.ToInt32(Session["userId"].ToString());
+                    var id = Convert.ToInt32(Session["edituserId"].ToString());
                     PopulateData(id);
                 }
             }
