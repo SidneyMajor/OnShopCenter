@@ -517,10 +517,6 @@
     <Content Include="Config\images\view_1.png" />
     <Content Include="Config\images\view_2.png" />
     <Content Include="Config\images\view_3.png" />
-    <Content Include="Config\js\cart.js" />
-    <Content Include="Config\js\category.js" />
-    <Content Include="Config\js\checkout.js" />
-    <Content Include="Config\js\custom.js" />
     <Content Include="Config\js\jquery-3.2.1.min.js" />
     <Content Include="Config\js\product.js" />
     <Content Include="Config\plugins\easing\easing.js" />

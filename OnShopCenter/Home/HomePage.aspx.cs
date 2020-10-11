@@ -17,6 +17,7 @@ namespace OnShopCenter.Home
         protected void Page_Load(object sender, EventArgs e)
         {
             BindigRepeaterProducts();
+            CheckCart(1);
             if (Session["userlogin"] != null)
             {
                 var id = Convert.ToInt32(Session["userId"].ToString());

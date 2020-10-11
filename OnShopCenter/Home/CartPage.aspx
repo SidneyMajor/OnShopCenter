@@ -9,12 +9,11 @@
     <title>On Shop Center</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="/Config/assets/img/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Config/assets/img/favicon.ico" />
 
     <link rel="icon" type="image/png" href="/Config/eCommerceDoc/images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/bootstrap-4.1.2/bootstrap.min.css" />
     <link href="/Config/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/cart.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/cart_responsive.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/main_styles.css" />
@@ -94,7 +93,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="cart_container">
-                                    <asp:Repeater ID="RepeaterOrder" runat="server">
+                                    <asp:Repeater ID="RepeaterOrder" runat="server" OnItemCommand="RepeaterOrder_ItemCommand" OnItemDataBound="RepeaterOrder_ItemDataBound">
                                         <HeaderTemplate>
                                             <!-- Cart Bar -->
                                             <div class="cart_bar">
@@ -134,8 +133,8 @@
                                                         <div class="product_quantity_container">
                                                             <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
                                                                 <span class="product_text product_num" runat="server"><%# Eval("Quantity") %></span>
-                                                                <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
-                                                                <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                                                                <div class="qty_sub qty_button trans_200 text-center"><span><asp:Button ID="btn_decrease" runat="server" Text="-" UseSubmitBehavior="false" CssClass="qty_sub qty_button trans_200 text-center" BorderStyle="None" BorderColor="Transparent" BackColor="Transparent" BorderWidth="0"  CommandName="btn_decrease" /></span></div>
+                                                                <div class="qty_add qty_button trans_200 text-center"><span><asp:Button ID="btn_increase" runat="server" Text="+" UseSubmitBehavior="false" CssClass="qty_sub qty_button trans_200 text-center" BorderStyle="None" BorderColor="Transparent" BackColor="Transparent" BorderWidth="0"  CommandName="btn_increase"  /></span></div>
                                                             </div>
                                                         </div>
                                                         <div class="product_total product_text"><span>Total: </span>€ <%# Eval("Total") %></div>
@@ -179,7 +178,7 @@
                                                     <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_total" runat="server"></asp:Label></</div>
                                                 </li>
                                             </ul>
-                                            <div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
+                                           <asp:Button ID="btn_checkout" runat="server" Text="Proceed to Checkout" CssClass="btn btn-success trans_200 btn-block"/>
                                         </div>
                                     </div>
                                 </div>
@@ -268,11 +267,9 @@
     <script src="/Config/plugins/easing/easing.js"></script>
     <script src="/Config/plugins/progressbar/progressbar.min.js"></script>
     <script src="/Config/plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="/Config/js/custom.js"></script>
+   
     <script src="../Config/eCommerceDoc/vendor/bootstrap/js/popper.js"></script>
     <script src="../Config/plugins/progressbar/progressbar.min.js"></script>
-    <script src="/Config/js/cart.js"></script>
-
 
 </body>
 </html>

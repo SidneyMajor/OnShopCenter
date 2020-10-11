@@ -9,7 +9,6 @@
     <title>On Shop Center</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="site.webmanifest" />
     <link rel="shortcut icon" type="image/x-icon" href="/Config/assets/img/favicon.ico" />
 
 

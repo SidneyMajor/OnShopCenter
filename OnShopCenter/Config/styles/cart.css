@@ -948,6 +948,7 @@ section
 .qty_button:hover
 {
 	color: #bbe432;
+	border-color:transparent;
 }
 .qty_sub
 {
