@@ -17,7 +17,7 @@ namespace OnShopCenter.Home
         protected void Page_Load(object sender, EventArgs e)
         {
             BindigRepeaterProducts();
-            CheckCart(1);
+            CheckCart(2);
             if (Session["userlogin"] != null)
             {
                 var id = Convert.ToInt32(Session["userId"].ToString());
@@ -130,7 +130,7 @@ namespace OnShopCenter.Home
                             Connection = myConn
                         };
 
-                        mycommand.Parameters.AddWithValue("@userId", 1);
+                        mycommand.Parameters.AddWithValue("@userId", 2);
                         //mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
                         mycommand.Parameters.AddWithValue("@productId", item.ProductId);
                         mycommand.Parameters.AddWithValue("@price", item.Price);

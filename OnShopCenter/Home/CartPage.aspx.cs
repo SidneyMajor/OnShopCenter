@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 
@@ -28,7 +29,12 @@ namespace OnShopCenter.Home
             //    BindingRepeaterOrder(id);
             //}
 
-            BindingRepeaterOrder(1);
+            BindingRepeaterOrder(2);
+
+            if (OrderDetailsTemps.Count==0 || OrderDetailsTemps==null)
+            {
+                btn_checkout.Enabled = false;
+            }
         }
 
 
@@ -57,11 +63,18 @@ namespace OnShopCenter.Home
                 numItemInCart.Text = reader.GetInt32(7).ToString();
                 lbl_total.Text = reader.GetSqlMoney(8).ToString();
                 lbl_sub.Text = reader.GetSqlMoney(8).ToString();
+                SqlMoney price = reader.GetSqlMoney(2);
+                Session["userRole"] = "Reseller";
+                if (Session["userRole"].ToString()=="Reseller")
+                {
+                    price -= price *(SqlMoney) 0.2;
+                }
+
                 OrderDetailsTemps.Add(new OrderDetailsTemp
                 {
                     ProductId = reader.GetInt32(0),
                     ProductName = reader.GetString(1),
-                    Price = reader.GetSqlMoney(2),
+                    Price = price,
                     Description = reader.GetString(3),
                     Category = reader.GetString(4),
                     Quantity = reader.GetInt32(5),
@@ -81,32 +94,34 @@ namespace OnShopCenter.Home
 
         protected void btn_clearCart_Click(object sender, EventArgs e)
         {
-            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
-            SqlCommand mycommand = new SqlCommand
-            {
-                CommandType = CommandType.StoredProcedure,
-                CommandText = "ClearCart",
+            //SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+            //SqlCommand mycommand = new SqlCommand
+            //{
+            //    CommandType = CommandType.StoredProcedure,
+            //    CommandText = "ClearCart",
 
-                Connection = myConn
-            };
+            //    Connection = myConn
+            //};
 
 
             //int id = Convert.ToInt32(Session["userId"].ToString());
-            mycommand.Parameters.AddWithValue("@userId", 1);
-            myConn.Open();
 
-            try
-            {
-                mycommand.ExecuteNonQuery();
-                myConn.Close();
-            }
-            catch (Exception)
-            {
+            ClearCart(2);
+            //mycommand.Parameters.AddWithValue("@userId", 2);
+            //myConn.Open();
 
-                throw;
-            }
+            //try
+            //{
+            //    mycommand.ExecuteNonQuery();
+            //    myConn.Close();
+            //}
+            //catch (Exception)
+            //{
 
-            Response.Redirect("CartPage.aspx");
+            //    throw;
+            //}
+
+            //Response.Redirect("CartPage.aspx");
         }
 
        
@@ -117,11 +132,11 @@ namespace OnShopCenter.Home
             int productId = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName== "btn_decrease")
             {
-                query = $"Update OrderDetailTemp set quantity-=1 Where userId={1} And productId={productId} ";
+                query = $"Update OrderDetailTemp set quantity-=1 Where userId={2} And productId={productId} ";
             }
             else if (e.CommandName == "btn_increase")
             {
-                query = $"Update OrderDetailTemp set quantity+=1 Where userId={1} And productId={productId} ";
+                query = $"Update OrderDetailTemp set quantity+=1 Where userId={2} And productId={productId} ";
             }
 
 
@@ -159,6 +174,77 @@ namespace OnShopCenter.Home
                 ((Button)e.Item.FindControl("btn_increase")).CommandArgument = dr.ProductId.ToString();
 
             }
+        }
+
+        protected void btn_checkout_Click(object sender, EventArgs e)
+        {
+            
+            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+            SqlCommand mycommand;
+            foreach (var item in OrderDetailsTemps)
+            {
+                mycommand = new SqlCommand
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "ConfirmOrder",
+
+                    Connection = myConn
+                };
+
+                mycommand.Parameters.AddWithValue("@userId", 2);
+                //mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
+                mycommand.Parameters.AddWithValue("@productId", item.ProductId);
+                mycommand.Parameters.AddWithValue("@price", item.Price);
+                mycommand.Parameters.AddWithValue("@quantity", item.Quantity);
+
+
+                try
+                {
+                    myConn.Open();
+                    mycommand.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    myConn.Close();
+                }
+
+            }
+
+
+            //int id = Convert.ToInt32(Session["userId"].ToString());
+            ClearCart(2);
+        }
+
+        private void ClearCart(int id)
+        {
+            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+            SqlCommand mycommand = new SqlCommand
+            {
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "ClearCart",
+
+                Connection = myConn
+            };
+            
+            mycommand.Parameters.AddWithValue("@userId", id);
+            myConn.Open();
+
+            try
+            {
+                mycommand.ExecuteNonQuery();
+                myConn.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            Response.Redirect("CartPage.aspx");
         }
     }
 }

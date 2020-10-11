@@ -178,7 +178,7 @@
                                                     <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_total" runat="server"></asp:Label></</div>
                                                 </li>
                                             </ul>
-                                           <asp:Button ID="btn_checkout" runat="server" Text="Proceed to Checkout" CssClass="btn btn-success trans_200 btn-block"/>
+                                           <asp:Button ID="btn_checkout" runat="server" Text="Proceed to Checkout" CssClass="btn btn-success trans_200 btn-block" OnClick="btn_checkout_Click"/>
                                         </div>
                                     </div>
                                 </div>

@@ -47,9 +47,19 @@ namespace OnShopCenter.Home
                 SqlDbType = SqlDbType.Int,
                 Size = 6
             };
+
+            SqlParameter valor3 = new SqlParameter
+            {
+                ParameterName = "@retorno_role",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.VarChar,
+                Size = 20
+            };
+
             //add parameter output
             mycommand.Parameters.Add(valor);
             mycommand.Parameters.Add(valor2);
+            mycommand.Parameters.Add(valor3);
             myConn.Open();
             try
             {
@@ -60,6 +70,7 @@ namespace OnShopCenter.Home
                 {
                     Session["userlogin"] = username.Value;
                     Session["userId"] = mycommand.Parameters["@retorno_id"].Value;
+                    Session["userRole"] = mycommand.Parameters["@retorno_role"].Value;
                     Response.Redirect("HomePage.aspx");
                 }
                 else
