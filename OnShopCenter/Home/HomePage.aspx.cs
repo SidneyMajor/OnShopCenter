@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace OnShopCenter.Home
@@ -17,7 +18,7 @@ namespace OnShopCenter.Home
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindigRepeaterProducts();
+            BindigRepeaterProducts("");
             CheckCart(2);
             if (Session["userlogin"] != null)
             {
@@ -68,12 +69,12 @@ namespace OnShopCenter.Home
 
         }
 
-        private void BindigRepeaterProducts()
+        private void BindigRepeaterProducts(string product)
         {
             /*string query = " select Product.productId, Product.productName,Product.price, Product.description,Product.quantity," +
                 "Category.description from Product inner join Category on Category.categoryId = Product.categoryId " +
                 "order by Product.productName";*/
-            
+            Products = new List<Product>();
             
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand = new SqlCommand
@@ -109,7 +110,7 @@ namespace OnShopCenter.Home
                     path = $"data:image/jpeg;base64,{base64}";
                 }
 
-
+                
 
                 Products.Add(new Product
                 {
@@ -125,8 +126,9 @@ namespace OnShopCenter.Home
             reader.Close();
             myConn.Close();
 
+            var list= Products.Where(p => p.ProductName.ToLower().Contains(product));
 
-            RepeaterProducts.DataSource = Products;
+            RepeaterProducts.DataSource = list.ToList();
             RepeaterProducts.DataBind();
         }
 
@@ -188,7 +190,6 @@ namespace OnShopCenter.Home
 
 
             }
-            //Session["usercart"]=OrderDetailsTemps;
         }
 
         protected void RepeaterProducts_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -202,5 +203,20 @@ namespace OnShopCenter.Home
             }
         }
 
+        
+
+        protected void tb_search_input_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_search_input.Text))
+            {
+                BindigRepeaterProducts("");
+
+            }
+            else
+            {
+                BindigRepeaterProducts(tb_search_input.Text.ToLower());
+            }
+
+        }
     }
 }

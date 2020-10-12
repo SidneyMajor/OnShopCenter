@@ -26,161 +26,178 @@
 </head>
 <body>
     <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
-
-        <div class="ml-5 mt-5">
-            <div class="row">
-                <div class="card badge-secondary m-2">
-                    <div class="card-body badge-info">
-                        <div class="col-12">
-                            <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
-                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound">
-                                <HeaderTemplate>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title text-warning">Resellers Pending</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <table class="table table-hover table-responsive table-striped " id="MyTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Full Name
-                                                        </th>
-                                                        <th>Tax Number
-                                                        </th>
-                                                        <th>Birth date
-                                                        </th>
-                                                        <th>Email
-                                                        </th>
-                                                        <th>Role
-                                                        </th>
-                                                        <th>Active
-                                                        </th>
-                                                        <th>
-                                                            <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                </HeaderTemplate>
-
-                                <ItemTemplate>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lbl_userId" runat="server" Visible="false"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="fullname" ReadOnly="true"> </asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="taxnumber" ReadOnly="true"> </asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="dateofbirth" ReadOnly="true"> </asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="email" ReadOnly="true"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox runat="server" ID="role" ReadOnly="true"> </asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:CheckBox runat="server" ID="ative"></asp:CheckBox>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ItemTemplate>
-
-                                <FooterTemplate>
-                                    </table>
-                         
-                               </div>
-                            </div>
-                                </FooterTemplate>
-                            </asp:Repeater>
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="ListUserReseller" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                        </div>
-                    </div>
+         <!-- User -->
+        <div class="user">
+            <div>
+                <asp:Label ID="lbl_user" Text="" runat="server" />
+                <div>
+                    <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                 </div>
-
-                <div class="card badge-secondary m-2">
-                    <div class="card-body badge-info">
-                        <div class="col-12">
-                            <asp:Repeater ID="RepeaterUsers" runat="server" OnItemCommand="RepeaterUsers_ItemCommand" OnItemDataBound="RepeaterUsers_ItemDataBound">
-                                <HeaderTemplate>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title text-warning">All Customer</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <table class="table table-hover table-responsive table-striped " id="MyTable2">
-                                                <thead>
-                                                    <tr>                                                        
-                                                        <th>Full Name
-                                                        </th>
-                                                        <th>Tax Number
-                                                        </th>
-                                                        <th>Birth date
-                                                        </th>
-                                                        <th>Email
-                                                        </th>
-                                                        <th>Role
-                                                        </th>
-                                                        <th>IsActive?
-                                                        </th>
-
-                                                    </tr>
-                                                </thead>
-                                </HeaderTemplate>
-
-                                <ItemTemplate>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <%# Eval("FullName") %>
-                                            </td>
-                                            <td>
-                                                <%# Eval("TaxNumber") %>
-                                            </td>
-                                            <td>
-                                                <%# Eval("DateOfBirth").ToString() %>
-                                            </td>
-                                            <td>
-                                                <%# Eval("Email") %>
-                                            </td>
-                                            <td>
-                                                <%# Eval("RoleName") %>
-                                            </td>
-                                            <td>
-                                                <%# Eval("IsActive") %>
-                                            </td>
-                                            <td>
-                                                <asp:Button ID="btn_edit" runat="server" Text="Edit" CssClass="btn btn-sm btn-warning" CommandName="btn_edit" UseSubmitBehavior="false"/>
-                                            </td>
-                                            <td>
-                                                <asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="btn btn-sm btn-danger" CommandName="btn_delete" UseSubmitBehavior="false" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ItemTemplate>
-
-                                <FooterTemplate>
-                                    </table>
-                         
-                               </div>
-                            </div>
-                                </FooterTemplate>
-                            </asp:Repeater>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
             </div>
         </div>
+        <div class="container mt-5">
+            <div class="card bg-white">
+                <div class="card-header bg-primary">
+                    <a href="Dashboard.aspx"><h2 class="text-center text-white">Clients</h2></a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="container mb-5">
+                            <div class="card badge-secondary">
+                                <div class="card-body badge-info">
+                                    <div class="col-12">
+                                        <asp:Repeater ID="RepeaterUsers" runat="server" OnItemCommand="RepeaterUsers_ItemCommand" OnItemDataBound="RepeaterUsers_ItemDataBound">
+                                            <HeaderTemplate>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title text-warning">All Customer</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <table class="table table-hover table-responsive table-striped " id="MyTable2">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Full Name
+                                                                    </th>
+                                                                    <th>Tax Number
+                                                                    </th>
+                                                                    <th>Birth date
+                                                                    </th>
+                                                                    <th>Email
+                                                                    </th>
+                                                                    <th>Role
+                                                                    </th>
+                                                                    <th>IsActive?
+                                                                    </th>
 
+                                                                </tr>
+                                                            </thead>
+                                            </HeaderTemplate>
+
+                                            <ItemTemplate>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <%# Eval("FullName") %>
+                                                        </td>
+                                                        <td>
+                                                            <%# Eval("TaxNumber") %>
+                                                        </td>
+                                                        <td>
+                                                            <%# Eval("DateOfBirth").ToString() %>
+                                                        </td>
+                                                        <td>
+                                                            <%# Eval("Email") %>
+                                                        </td>
+                                                        <td>
+                                                            <%# Eval("RoleName") %>
+                                                        </td>
+                                                        <td>
+                                                            <%# Eval("IsActive") %>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="btn_edit" runat="server" Text="Edit" CssClass="btn btn-sm btn-warning" CommandName="btn_edit" UseSubmitBehavior="false" />
+                                                        </td>
+                                                        <td>
+                                                            <asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="btn btn-sm btn-danger" CommandName="btn_delete" UseSubmitBehavior="false" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </ItemTemplate>
+
+                                            <FooterTemplate>
+                                                </table>
+
+                                            </FooterTemplate>
+
+                                        </asp:Repeater>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container mt-2">
+                        <div class="card badge-secondary">
+                            <div class="card-header badge-info">
+                                <div class="col-12">
+                                    <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
+                                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound">
+                                        <HeaderTemplate>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title text-warning">Resellers Pending</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-hover table-responsive table-striped " id="MyTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Full Name
+                                                                </th>
+                                                                <th>Tax Number
+                                                                </th>
+                                                                <th>Birth date
+                                                                </th>
+                                                                <th>Email
+                                                                </th>
+                                                                <th>Role
+                                                                </th>
+                                                                <th>Active
+                                                                </th>
+                                                                <th>
+                                                                    <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                        </HeaderTemplate>
+
+                                        <ItemTemplate>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lbl_userId" runat="server" Visible="false"></asp:Label>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="fullname" ReadOnly="true"> </asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="taxnumber" ReadOnly="true"> </asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="dateofbirth" ReadOnly="true"> </asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="email" ReadOnly="true"></asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="role" ReadOnly="true"> </asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:CheckBox runat="server" ID="ative"></asp:CheckBox>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </ItemTemplate>
+
+                                        <FooterTemplate>
+                                            </table>
+                         
+                               </div>
+                            </div>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="ListUserReseller" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer mt-2">
+                        <a class="btn btn-block btn-secondary" href="Dashboard.aspx"><i class="fa fa-arrow-left mr-1"></i>Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
     <script src="/Config/js/jquery-3.2.1.min.js"></script>
     <script src="../Config/styles/bootstrap-4.1.2/bootstrap.min.js"></script>

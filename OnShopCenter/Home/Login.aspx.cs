@@ -71,6 +71,11 @@ namespace OnShopCenter.Home
                     Session["userlogin"] = username.Value;
                     Session["userId"] = mycommand.Parameters["@retorno_id"].Value;
                     Session["userRole"] = mycommand.Parameters["@retorno_role"].Value;
+
+                    if (Session["userRole"].ToString()=="Admin")
+                    {
+                        Response.Redirect("../BackOffice/Dashboard.aspx");
+                    }
                     Response.Redirect("HomePage.aspx");
                 }
                 else

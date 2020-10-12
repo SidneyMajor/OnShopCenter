@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
 using System.Web.UI.WebControls;
 
 namespace OnShopCenter.BackOffice
@@ -14,6 +12,14 @@ namespace OnShopCenter.BackOffice
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userlogin"] == null || Session["userRole"].ToString() != "Admin")
+            {
+                Response.Redirect("../Home/Login.aspx");
+            }
+
+            lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+            btn_login.Text = "Logout";
+
             BindigRepeaterUsers();
         }
 
@@ -169,7 +175,7 @@ namespace OnShopCenter.BackOffice
             {
                 query += "UPDATE myUser SET ";
                 query += "ativo='" + ((CheckBox)Repeater1.Items[i].FindControl("ative")).Checked + "' ";
-                query += "WHERE userId=" + ((Label)Repeater1.Items[i].FindControl("lbl_userId")).Text + ";";                
+                query += "WHERE userId=" + ((Label)Repeater1.Items[i].FindControl("lbl_userId")).Text + ";";
 
 
                 hl_recuperar.NavigateUrl = "https://localhost:44383/Home/HomePage.aspx";
@@ -277,6 +283,13 @@ namespace OnShopCenter.BackOffice
                     myConn.Close();
                 }
             }
+        }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("../Home/HomePage.aspx");
+            btn_login.Text = "Login";
         }
     }
 }

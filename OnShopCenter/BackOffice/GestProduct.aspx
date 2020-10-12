@@ -26,9 +26,21 @@
 </head>
 <body>
     <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
-
-        <div class="ml-5">
-
+        <!-- User -->
+        <div class="user">
+            <div>
+                <asp:Label ID="lbl_user" Text="" runat="server" />
+                <div>
+                    <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="margin-left: 120px;">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div class="row">
                 <div class="col-12">
                     <div class="mt-2">
@@ -37,6 +49,8 @@
                     <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Insert Product
                     </button>
+                    <a href="Dashboard.aspx" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+
                     <div class="row">
                         <div class="col-md-7">
                             <div class="collapse validate-form" id="collapseExample">
@@ -96,7 +110,7 @@
 
                 </div>
 
-                <div class="card badge-secondary m-2">
+                <div class="card badge-secondary">
                     <div class="card-body badge-info">
                         <div class="col-12">
                             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
@@ -110,21 +124,16 @@
                                                 <thead>
                                                     <tr>
                                                         <th></th>
-                                                        <th>
-                                                            Product Name
+                                                        <th>Product Name
                                                         </th>
-                                                        <th>
-                                                            Category
+                                                        <th>Category
                                                         </th>
-                                                        <th>
-                                                            Price
+                                                        <th>Price
                                                         </th>
-                                                        <th>
-                                                            Description
+                                                        <th>Description
                                                         </th>
-                                                        <th>
-                                                            Quantity
-                                                        </th>                                                        
+                                                        <th>Quantity
+                                                        </th>
                                                         <th>
                                                             <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
                                                         </th>

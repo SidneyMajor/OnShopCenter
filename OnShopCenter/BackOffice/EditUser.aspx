@@ -45,39 +45,23 @@
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                         <!-- User -->
                         <div class="user">
-                            <a href="/CommunPages/Login.aspx">
-                                <div>
-                                    <img src="/Config/images/user.svg" alt="https://www.flaticon.com/authors/freepik" /><div>1</div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Cart -->
-                        <div class="cart  user">
-                            <a href="#">
-                                <div>
-                                    <img class="svg" src="/Config/images/cart.svg" alt="https://www.flaticon.com/authors/freepik" /><div>
-                                        <asp:Label ID="addcart" Text="0" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Phone -->
-                        <div class="header_phone d-flex flex-row align-items-center justify-content-start">
                             <div>
+                                <asp:Label ID="lbl_user" Text="" runat="server" />
                                 <div>
-                                    <img src="/Config/images/phone.svg" alt="https://www.flaticon.com/authors/freepik" />
+                                    <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
                             </div>
-                            <div>+1 912-252-7350</div>
                         </div>
+
+
                     </div>
                 </div>
             </header>
             <div class="container mt-5">
                 <div class="card badge-info">
                     <div class=" card-header ">
-                        <a href="GestUser.aspx" id="link" runat="server" class="btn btn-secondary mb-2"><i class="fa fa-arrow-circle-o-left"></i> Back</a>
-                        <h2 class="text-white font-weight-bold btn-block border-dark"><i class="fa fa-user-circle text-white-50"></i> User Information</h2>
+                        <a href="GestUser.aspx" id="link" runat="server" class="btn btn-secondary mb-2"><i class="fa fa-arrow-circle-o-left mr-1"></i>Back</a>
+                        <h2 class="text-white font-weight-bold btn-block border-dark"><i class="fa fa-user-circle text-white-50 mr-1"></i>User Information</h2>
                         <div class="card card-body">
 
                             <div class="row">
@@ -134,7 +118,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon5"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                         </div>
-                                        <input type="email" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon5" runat="server" id="email" required="required"  />
+                                        <input type="email" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon5" runat="server" id="email" required="required" />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -159,14 +143,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon8">Role</span>
                                         </div>
-                                        <asp:DropDownList ID="ddl_role" runat="server" CssClass="form-control" aria-label="Role" aria-describedby="basic-addon8" required="required" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId" ></asp:DropDownList>
+                                        <asp:DropDownList ID="ddl_role" runat="server" CssClass="form-control" aria-label="Role" aria-describedby="basic-addon8" required="required" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole]"></asp:SqlDataSource>
                                     </div>
 
                                 </div>
 
                             </div>
-                            <asp:Button ID="btn_Save" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btn_Save_Click"/>
+                            <asp:Button ID="btn_Save" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btn_Save_Click" />
                             <div class="alert-success btn-block">
                                 <asp:Label ID="lbl_result" runat="server" Text="" CssClass="text-center" Font-Size="X-Large"></asp:Label><br />
                             </div>

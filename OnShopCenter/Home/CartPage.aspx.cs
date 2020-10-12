@@ -29,6 +29,7 @@ namespace OnShopCenter.Home
             //    BindingRepeaterOrder(id);
             //}
 
+            //depois eliminar isso. e ativar o codigo a cima.
             BindingRepeaterOrder(2);
 
             if (OrderDetailsTemps.Count==0 || OrderDetailsTemps==null)
@@ -67,6 +68,7 @@ namespace OnShopCenter.Home
                 lbl_total.Text = reader.GetSqlMoney(8).ToString();
                 lbl_sub.Text = reader.GetSqlMoney(8).ToString();
                 SqlMoney price = reader.GetSqlMoney(2);
+                //depois eliminar isso.
                 Session["userRole"] = "Reseller";
                 if (Session["userRole"].ToString()=="Reseller")
                 {

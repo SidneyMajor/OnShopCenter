@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/Config/styles/responsive.css" />
     <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
     <%--<link href="../Config/styles/product.css" rel="stylesheet" />--%>
+    <%--<link href="../Config/styles/product.css" rel="stylesheet" />--%>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -51,13 +52,14 @@
                     </nav>--%>
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                         <!-- Search -->
-                        <%--  <div class="header_search">
+                          <div class="header_search">
                             <div id="header_search_form">
-                                <input type="text" class="search_input" placeholder="Search Item" required="required" />
-                                <button class="header_search_button">
-                                    <img src="/Config/images/search.png" alt="" /></button>
+                                <asp:TextBox ID="tb_search_input" runat="server" CssClass="search_input" OnTextChanged="tb_search_input_TextChanged" AutoPostBack="True" placeholder="Search Item"/>
+                                <%--<input type="text" class="search_input" placeholder="Search Item" id="teste" runat="server"/>--%>
+                                <%--<asp:button CssClass="header_search_button" runat="server" id="btn_search" OnClick="btn_search_Click"/>--%>
+                                    <%--<img src="/Config/images/search.png" alt="" />--%>
                             </div>
-                        </div>--%>
+                        </div>
                         <!-- User -->
                         <div class="user">
                             <a href="/CommunPages/Login.aspx">
@@ -101,9 +103,9 @@
                                     <!-- Product -->
                                     <div class="col-xl-4 col-md-6 ">
                                         <div class="product">
-                                            <div class="product_image">
+                                            <div style="max-width:600px">
                                                 <div class="card-footer ">
-                                                    <img src="<%# Eval("ImagePath") %>" style="background-position:center; background-size:cover; height:300px; width:350px;" alt="" />
+                                                    <img src="<%# Eval("ImagePath") %>" style="background-position:center; background-size:cover; height:300px; width:450px;" alt="" />
                                                     <%--<asp:Image ID="Image1" runat="server" ImageUrl="<%# Eval("Image") %>" />--%>
                                                 </div>
                                             </div>

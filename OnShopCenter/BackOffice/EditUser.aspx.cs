@@ -16,17 +16,18 @@ namespace OnShopCenter.BackOffice
         public User _user = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["userlogin"]==null)
-            //{
-            //    Response.Redirect("../Home/Login.aspx");
-            //}
+            if (Session["userlogin"] == null || Session["userRole"].ToString()!="Admin")
+            {
+                Response.Redirect("../Home/Login.aspx");
+            }
+
+            lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+            btn_login.Text = "Logout";
 
             if (!IsPostBack)
             {
                 if (Session["edituserId"] != null)
                 {
-                    //var d = DateTime.Now.ToString("yyyy-MM-dd");
-                    //dateofbirth.Value = d;
                     var id = Convert.ToInt32(Session["edituserId"].ToString());
                     PopulateData(id);
                 }
@@ -143,6 +144,13 @@ namespace OnShopCenter.BackOffice
 
             Response.Redirect("BackOffice/GestUser.aspx");
 
+        }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("../Home/HomePage.aspx");
+            btn_login.Text = "Login";
         }
     }
 }

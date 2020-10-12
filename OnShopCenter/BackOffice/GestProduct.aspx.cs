@@ -13,6 +13,13 @@ namespace OnShopCenter.BackOffice
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userlogin"] == null || Session["userRole"].ToString() != "Admin")
+            {
+                Response.Redirect("../Home/Login.aspx");
+            }
+
+            lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+            btn_login.Text = "Logout";
 
         }
         protected void btn_Save_Click(object sender, EventArgs e)
@@ -180,6 +187,13 @@ namespace OnShopCenter.BackOffice
             SqlCommand myCommand = new SqlCommand(query, myConn);
             myCommand.ExecuteNonQuery();
             myConn.Close();
+        }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("../Home/HomePage.aspx");
+            btn_login.Text = "Login";
         }
     }
 }
