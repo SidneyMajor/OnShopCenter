@@ -127,6 +127,7 @@
     <Content Include="Config\images\Cart-add.png" />
     <Content Include="Config\images\cart-buy-cart.png" />
     <Content Include="Config\images\cart.svg" />
+    <Content Include="Config\images\no-image.png" />
     <Content Include="Config\images\Rato.jpg" />
     <Content Include="Config\images\shopcart.svg" />
     <Content Include="Home\CartPage.aspx" />

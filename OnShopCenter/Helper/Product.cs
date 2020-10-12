@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -17,5 +18,7 @@ namespace OnShopCenter.Helper
         public SqlMoney Price { get; set; }
 
         public string Description { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

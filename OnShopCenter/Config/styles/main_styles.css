@@ -783,7 +783,7 @@ section
 .product
 {
 	overflow: hidden;
-	border-radius: 3px;
+	border-radius: 6px;
 }
 .product
 {
@@ -847,12 +847,12 @@ section
 }
 .product_name
 {
-	max-width: 175px;
+	max-width: 190px;
 }
 .product_name a
 {
-	font-size: 20px;
-	line-height: 1.2;
+	font-size: 14px;
+	line-height: 1;
 	color: #4a4a4a;
 	font-weight: 500;
 }

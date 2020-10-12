@@ -58,6 +58,9 @@ namespace OnShopCenter.Home
             var reader = mycommand.ExecuteReader();
             //numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
 
+           
+
+
             while (reader.Read())
             {
                 numItemInCart.Text = reader.GetInt32(7).ToString();
@@ -70,6 +73,24 @@ namespace OnShopCenter.Home
                     price -= price *(SqlMoney) 0.2;
                 }
 
+                string base64 = string.Empty;
+
+                if (reader[9] != null && reader[9].ToString().Length > 1)
+                {
+                    base64 = Convert.ToBase64String((byte[])reader[9]);
+                }
+
+
+                string path;
+                if (string.IsNullOrEmpty(base64))
+                {
+                    path = "../Config/images/no-image.png";
+                }
+                else
+                {
+                    path = $"data:image/jpeg;base64,{base64}";
+                }
+
                 OrderDetailsTemps.Add(new OrderDetailsTemp
                 {
                     ProductId = reader.GetInt32(0),
@@ -79,6 +100,7 @@ namespace OnShopCenter.Home
                     Category = reader.GetString(4),
                     Quantity = reader.GetInt32(5),
                     UserId = reader.GetInt32(6),
+                    ImagePath = path
                 });
 
 

@@ -20,16 +20,12 @@
     <link rel="stylesheet" type="text/css" href="/Config/styles/main_styles.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/responsive.css" />
     <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
+    <%--<link href="../Config/styles/product.css" rel="stylesheet" />--%>
 </head>
 <body>
     <form id="form1" runat="server">
-
-       
-
         <div class="super_container">
-
             <!-- Header -->
-
             <header class="header">
                 <div class="header_overlay"></div>
                 <div class="header_content d-flex flex-row align-items-center justify-content-start">
@@ -104,17 +100,18 @@
 
                                     <!-- Product -->
                                     <div class="col-xl-4 col-md-6 ">
-                                        <div class="product m-4">
+                                        <div class="product">
                                             <div class="product_image">
-                                                <div class="card-header badge-secondary">
-                                                    <img src="/Config/images/Rato.jpg" alt="">
+                                                <div class="card-footer ">
+                                                    <img src="<%# Eval("ImagePath") %>" style="background-position:center; background-size:cover; height:300px; width:350px;" alt="" />
+                                                    <%--<asp:Image ID="Image1" runat="server" ImageUrl="<%# Eval("Image") %>" />--%>
                                                 </div>
                                             </div>
                                             <div class="product_content">
                                                 <div class="product_info d-flex flex-row align-items-start justify-content-start">
                                                     <div>
                                                         <div>
-                                                            <div class="product_name"><a href="product.html"><%# Eval("ProductName") %></a></div>
+                                                            <div class="product_name"><a href="#"><%# Eval("ProductName") %></a></div>
                                                             <div class="product_category"><%# Eval("Description") %></div>
                                                         </div>
                                                     </div>

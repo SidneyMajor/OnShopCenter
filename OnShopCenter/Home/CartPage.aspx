@@ -120,7 +120,7 @@
                                                             </div>
                                                             <div>
                                                                 <div class="product_image">
-                                                                    <img src="../Config/images/Rato.jpg" alt="" />
+                                                                    <img src="<%# Eval("ImagePath") %>" alt="" />
                                                                 </div>
                                                             </div>
                                                             <div class="product_name_container">

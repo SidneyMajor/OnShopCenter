@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Web.UI.WebControls;
 
 namespace OnShopCenter.Home
@@ -23,7 +24,7 @@ namespace OnShopCenter.Home
                 var id = Convert.ToInt32(Session["userId"].ToString());
                 CheckCart(id);
             }
-
+            
         }
 
         private void CheckCart(int id)
@@ -72,8 +73,8 @@ namespace OnShopCenter.Home
             /*string query = " select Product.productId, Product.productName,Product.price, Product.description,Product.quantity," +
                 "Category.description from Product inner join Category on Category.categoryId = Product.categoryId " +
                 "order by Product.productName";*/
-
-
+            
+            
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand = new SqlCommand
             {
@@ -90,16 +91,37 @@ namespace OnShopCenter.Home
 
             while (reader.Read())
             {
+                string base64 = string.Empty;
+                
+                if (reader[6]!=null && reader[6].ToString().Length>1)
+                {
+                    base64 = Convert.ToBase64String((byte[])reader[6]);
+                }
+
+
+                string path;
+                if (string.IsNullOrEmpty(base64))
+                {
+                    path = "../Config/images/no-image.png";
+                }
+                else
+                {
+                    path = $"data:image/jpeg;base64,{base64}";
+                }
+
+
+
                 Products.Add(new Product
                 {
                     ProductId = reader.GetInt32(0),
                     ProductName = reader.GetString(1),
                     Price = reader.GetSqlMoney(2),
                     Description = reader.GetString(3),
-                    Category = reader.GetString(5)
+                    Category = reader.GetString(5),
+                    ImagePath= path
                 });
             }
-
+            
             reader.Close();
             myConn.Close();
 
@@ -113,10 +135,10 @@ namespace OnShopCenter.Home
 
             if (e.CommandName.Equals("btn_cart"))
             {
-                //if (Session["userlogin"] == null)
-                //{
-                //    Response.Redirect("../Home/Login.aspx");
-                //}
+                if (Session["userlogin"] == null)
+                {
+                    Response.Redirect("../Home/Login.aspx");
+                }
                 foreach (var item in Products)
                 {
                     if (item.ProductId.ToString() == ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
@@ -135,7 +157,7 @@ namespace OnShopCenter.Home
                         mycommand.Parameters.AddWithValue("@productId", item.ProductId);
                         mycommand.Parameters.AddWithValue("@price", item.Price);
                         mycommand.Parameters.AddWithValue("@quantity", 1);
-
+                        
                         SqlParameter valor = new SqlParameter
                         {
                             ParameterName = "@retorno",
@@ -179,7 +201,6 @@ namespace OnShopCenter.Home
 
             }
         }
-
 
     }
 }
