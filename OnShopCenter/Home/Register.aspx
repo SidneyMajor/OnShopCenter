@@ -40,121 +40,149 @@
     <form id="form1" runat="server" class="validate-form ">
         <div class="container">
             <div class="row ml-5">
-                <div class="col-10 ">
-                    <div class="login100-form validate-form">
-                        <span class="login100-form-title p-b-20 mt-5">Sign Up </span>
+                <div class="col-12 ">
+                    <span class="login100-form-title p-b-20 mt-5"><i class="fa fa-home mr-1"></i> On Shop Center </span>
 
-                        <div class="alert-success btn-block">
-                            <asp:Label ID="lbl_result" runat="server" Text=""  CssClass="text-center" Font-Size="X-Large"></asp:Label><br />
+                    <div>
+                        <asp:Label ID="lbl_result" runat="server" Text="" CssClass="text-center alert-success btn-block" Font-Size="X-Large" Visible="false"></asp:Label><br />
+                    </div>
+
+                    <div class="m-3 p-5 bg-white" style="border-radius: 10px;">
+                         <span class="login100-form-title p-b-20 mb-1 text-black-50">Sign Up </span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1" runat="server" id="fullname" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon9"><i class="fa fa-venus-mars" aria-hidden="true"></i></span>
+                                    </div>
+                                    <asp:DropDownList ID="ddl_gender" runat="server" CssClass="form-control" aria-label="Gender" aria-describedby="basic-addon9" required="required">
+                                        <asp:ListItem>M</asp:ListItem>
+                                        <asp:ListItem>F</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-address-book"></i></span>
+                                    </div>
+                                    <input type="text" aria-multiline="true" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon2" runat="server" id="address" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3"><i class="fa fa-location-arrow"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0000-000" aria-label="Zip Code" aria-describedby="basic-addon3" runat="server" id="zipcode" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon4">#</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Tax Number" aria-label="Tax Number" maxlength="20" aria-describedby="basic-addon4" runat="server" id="taxnumber" required="required" min="9" />
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon6"><i class="fa fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="999-999-999" aria-label="Phone" aria-describedby="basic-addon6" runat="server" id="phonenumber" aria-required="False" maxlength="15" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon7"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <input id="dateofbirth" runat="server" aria-describedby="basic-addon7" aria-label="Date Of Birth" class="form-control" type="date" value="yyyy-MM-dd" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon8">Role</span>
+                                    </div>
+                                    <asp:DropDownList ID="ddl_role" runat="server" CssClass="form-control" aria-label="Role" aria-describedby="basic-addon8" required="required" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole] WHERE ([roleName] NOT LIKE '%' + @roleName + '%')">
+                                        <SelectParameters>
+                                            <asp:Parameter DefaultValue="Admin" Name="roleName" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon5"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                    </div>
+                                    <input type="email" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon5" runat="server" id="email" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon10"><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input id="password" runat="server" aria-describedby="basic-addon10" aria-label="Password" placeholder="Password" class="form-control" type="password" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon11"><i class="fa fa-lock"></i></span>
+                                    </div>
+                                    <input id="confirmpassword" runat="server" aria-describedby="basic-addon11" aria-label="Confirm Password" placeholder="Confirm Password" class="form-control" type="password" required="required" />
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="m-5 p-5 bg-white" style="border-radius: 10px;">
+
+                        <div class="m-t-2 text-center btn-block">
+                            &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="password" ControlToValidate="confirmpassword" ErrorMessage="Password does not match!" ForeColor="Red" Type="Integer" SetFocusOnError="True" CssClass="alert-danger btn-block"></asp:CompareValidator>
+                        </div>
 
 
-                            <div class="row">
+                        <div class="container-login100-form-btn m-t-10">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <asp:Button ID="btn_signUp" runat="server" Text="Sign up" CssClass="login100-form-btn" OnClick="btn_signUp_Click"></asp:Button>
 
-                                <div class="col-md-6 mt-1">
-                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                        <input class="input101" type="text" name="name" placeholder="Full name" id="fullname" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input">
-                                        <span class="label-input100">Gender</span>
-                                        <asp:DropDownList ID="ddl_gender" runat="server" CssClass="dropdown-item">
-                                            <asp:ListItem>M</asp:ListItem>
-                                            <asp:ListItem>F</asp:ListItem>
-                                        </asp:DropDownList>
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Address is required">
-                                        <input class="input101" type="text" name="address" placeholder="Address" id="address" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Zip Code is required">
-                                        <input class="input101" type="text" name="zipcodes" placeholder="0000-000" id="zipcode" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Tax Number is required">
-                                        <input class="input101" type="text" name="taxnumber" placeholder="Tax Number" id="taxnumber" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input">
-                                        <input class="input101" type="text" name="phonenumber" placeholder="Phone Number" id="phonenumber" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Date of Birth is required">
-                                        <span class="label-input100">Date of Birth</span>
-                                        <input class="input101 start-date" type="date" name="datanasc" id="datanasc" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-3">
-                                    <div class="wrap-input100 validate-input" data-validate="Type of profile is required">
-                                        <span class="label-input100">Type of profile</span>
-                                        <asp:DropDownList ID="ddl_profile" runat="server" CssClass="dropdown-item" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole] WHERE ([roleName] NOT LIKE '%' + @roleName + '%')">
-                                            <SelectParameters>
-                                                <asp:Parameter DefaultValue="Admin" Name="roleName" Type="String" />
-                                            </SelectParameters>
-                                        </asp:SqlDataSource>
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                                        <input class="input101" type="email" name="email" placeholder="Email: ex@abc.xyz" id="email" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                                        <input class="input101" type="password" name="pass" placeholder="Password" id="password" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="wrap-input100 validate-input" data-validate="Repeat Password is required">
-                                        <input class="input101" type="password" name="repeat-pass" placeholder="Repeat Password" id="repeat_password" runat="server" />
-                                        <span class="focus-input100"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-t-2">
-                                &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="password" ControlToValidate="repeat_password" ErrorMessage="Password does not match!" ForeColor="Red" Type="Integer" SetFocusOnError="True"></asp:CompareValidator>
                             </div>
 
-
-                            <div class="container-login100-form-btn m-t-32">
-                                <div class="wrap-login100-form-btn">
-                                    <div class="login100-form-bgbtn"></div>
-                                    <asp:Button ID="btn_signUp" runat="server" Text="Sign up" CssClass="login100-form-btn" OnClick="btn_signUp_Click"></asp:Button>
-
-                                </div>
-
-                                <a href="Login.aspx" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Sign in
+                            <a href="Login.aspx" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Sign in
 							        <i class="fa fa-long-arrow-right m-l-5"></i>
-                                </a>
-                                <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
-                            </div>
+                            </a>
+                            <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
 
 
     </form>

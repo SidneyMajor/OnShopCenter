@@ -87,22 +87,22 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlInputText phonenumber;
 
         /// <summary>
-        /// datanasc control.
+        /// dateofbirth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl datanasc;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateofbirth;
 
         /// <summary>
-        /// ddl_profile control.
+        /// ddl_role control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_profile;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_role;
 
         /// <summary>
         /// SqlDataSource1 control.
@@ -132,13 +132,13 @@ namespace OnShopCenter.Home
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
 
         /// <summary>
-        /// repeat_password control.
+        /// confirmpassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword repeat_password;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword confirmpassword;
 
         /// <summary>
         /// CompareValidator1 control.

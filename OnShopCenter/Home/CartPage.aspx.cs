@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
-using System.Web.Services;
 using System.Web.UI.WebControls;
 
 
@@ -16,28 +15,43 @@ namespace OnShopCenter.Home
         public List<OrderDetailsTemp> OrderDetailsTemps { get; set; } = new List<OrderDetailsTemp>();
 
         public int ProductNumber { get; set; } = 0;
-        
+        private int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["userlogin"] == null)
-            //{
-            //    Response.Redirect("../Home/Login.aspx");
-            //}
-            //else
-            //{
-            //    var id = Convert.ToInt32(Session["userId"].ToString());
-            //    BindingRepeaterOrder(id);
-            //}
+            if (Session["userlogin"] == null)
+            {
+                Response.Redirect("../Home/Login.aspx");
+            }
 
-            //depois eliminar isso. e ativar o codigo a cima.
-            BindingRepeaterOrder(2);
+            lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+            btn_login.Text = "Logout";
 
-            if (OrderDetailsTemps.Count==0 || OrderDetailsTemps==null)
+            id = Convert.ToInt32(Session["userId"].ToString());
+            BindingRepeaterOrder(id);
+
+
+
+            if (OrderDetailsTemps.Count == 0 || OrderDetailsTemps == null)
             {
                 btn_checkout.Enabled = false;
             }
         }
 
+
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            if (Session["userlogin"] != null)
+            {
+
+                Session.Clear();
+                Response.Redirect("../Home/HomePage.aspx");
+                btn_login.Text = "Login";
+            }
+
+            Response.Redirect("../Home/Login.aspx");
+
+        }
 
         public void BindingRepeaterOrder(int id)
         {
@@ -57,23 +71,25 @@ namespace OnShopCenter.Home
 
 
             var reader = mycommand.ExecuteReader();
-            //numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
-
-           
-
-
+            SqlMoney money = 0.0m;
             while (reader.Read())
             {
                 numItemInCart.Text = reader.GetInt32(7).ToString();
                 lbl_total.Text = reader.GetSqlMoney(8).ToString();
                 lbl_sub.Text = reader.GetSqlMoney(8).ToString();
                 SqlMoney price = reader.GetSqlMoney(2);
-                //depois eliminar isso.
-                Session["userRole"] = "Reseller";
-                if (Session["userRole"].ToString()=="Reseller")
+
+
+                if (Session["userRole"].ToString() == "Reseller")
                 {
-                    price -= price *(SqlMoney) 0.2;
+                    price -= price * (SqlMoney)0.2;
+
+                    money += price * reader.GetInt32(5);
+                    lbl_sub.Text = money.ToString();
+                    lbl_total.Text = money.ToString();
                 }
+
+
 
                 string base64 = string.Empty;
 
@@ -108,6 +124,11 @@ namespace OnShopCenter.Home
 
             }
 
+            if (Session["userRole"].ToString() == "Reseller")
+            {
+
+            }
+
             reader.Close();
             myConn.Close();
 
@@ -118,49 +139,23 @@ namespace OnShopCenter.Home
 
         protected void btn_clearCart_Click(object sender, EventArgs e)
         {
-            //SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
-            //SqlCommand mycommand = new SqlCommand
-            //{
-            //    CommandType = CommandType.StoredProcedure,
-            //    CommandText = "ClearCart",
 
-            //    Connection = myConn
-            //};
-
-
-            //int id = Convert.ToInt32(Session["userId"].ToString());
-
-            ClearCart(2);
-            //mycommand.Parameters.AddWithValue("@userId", 2);
-            //myConn.Open();
-
-            //try
-            //{
-            //    mycommand.ExecuteNonQuery();
-            //    myConn.Close();
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-
-            //Response.Redirect("CartPage.aspx");
+            ClearCart(id);
         }
 
-       
+
         protected void RepeaterOrder_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             string query = string.Empty;
-            //int id = Convert.ToInt32(Session["userId"].ToString());
             int productId = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName== "btn_decrease")
+
+            if (e.CommandName == "btn_decrease")
             {
-                query = $"Update OrderDetailTemp set quantity-=1 Where userId={2} And productId={productId} ";
+                query = $"Update OrderDetailTemp set quantity-=1 Where userId={id} And productId={productId} And quantity>0 ";
             }
             else if (e.CommandName == "btn_increase")
             {
-                query = $"Update OrderDetailTemp set quantity+=1 Where userId={2} And productId={productId} ";
+                query = $"Update OrderDetailTemp set quantity+=1 Where userId={id} And productId={productId} And quantity>=0 ";
             }
 
 
@@ -202,7 +197,7 @@ namespace OnShopCenter.Home
 
         protected void btn_checkout_Click(object sender, EventArgs e)
         {
-            
+
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand;
             foreach (var item in OrderDetailsTemps)
@@ -215,8 +210,8 @@ namespace OnShopCenter.Home
                     Connection = myConn
                 };
 
-                mycommand.Parameters.AddWithValue("@userId", 2);
-                //mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
+                //mycommand.Parameters.AddWithValue("@userId", 2);
+                mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
                 mycommand.Parameters.AddWithValue("@productId", item.ProductId);
                 mycommand.Parameters.AddWithValue("@price", item.Price);
                 mycommand.Parameters.AddWithValue("@quantity", item.Quantity);
@@ -238,9 +233,7 @@ namespace OnShopCenter.Home
 
             }
 
-
-            //int id = Convert.ToInt32(Session["userId"].ToString());
-            ClearCart(2);
+            ClearCart(id);
         }
 
         private void ClearCart(int id)
@@ -253,7 +246,7 @@ namespace OnShopCenter.Home
 
                 Connection = myConn
             };
-            
+
             mycommand.Parameters.AddWithValue("@userId", id);
             myConn.Open();
 

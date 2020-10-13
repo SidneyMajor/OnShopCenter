@@ -45,13 +45,14 @@
 
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
 
-                        <!-- User -->
+                       <!-- User -->
                         <div class="user">
-                            <a href="/CommunPages/Login.aspx">
+                            <div>
+                                <asp:Label ID="lbl_user" Text="" runat="server" />
                                 <div>
-                                    <img src="/Config/images/user.svg" alt="https://www.flaticon.com/authors/freepik" /><div>1</div>
+                                    <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <!-- Cart -->
                         <div class="cart  user">
@@ -167,7 +168,7 @@
                                             <ul class="cart_extra_total_list">
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Subtotal</div>
-                                                    <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_sub" runat="server"></asp:Label></div>
+                                                    <div class="cart_extra_total_value ml-auto"><span>€ <asp:Label ID="lbl_sub" runat="server"></asp:Label></span></div>
                                                 </li>
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Shipping</div>
@@ -175,7 +176,7 @@
                                                 </li>
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Total</div>
-                                                    <div class="cart_extra_total_value ml-auto"><span>€</span><asp:Label ID="lbl_total" runat="server"></asp:Label></</div>
+                                                    <div class="cart_extra_total_value ml-auto"><span>€ <asp:Label ID="lbl_total" runat="server"></asp:Label></span></</div>
                                                 </li>
                                             </ul>
                                            <asp:Button ID="btn_checkout" runat="server" Text="Proceed to Checkout" CssClass="btn btn-success trans_200 btn-block" OnClick="btn_checkout_Click"/>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestProduct.aspx.cs" Inherits="OnShopCenter.BackOffice.GestProduct" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestCategory.aspx.cs" Inherits="OnShopCenter.BackOffice.GestCategory" %>
 
 <!DOCTYPE html>
 
@@ -22,11 +22,9 @@
     <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
     <link href="../Config/eCommerceDoc/bootstrap-4.5.2-dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-
 </head>
 <body>
-    <form id="form1" runat="server" class="login100-form validate-form p-b-33 p-t-5">
-
+    <form id="form1" runat="server">
         <div class="super_container">
             <!-- Header -->
             <header class="header">
@@ -68,7 +66,7 @@
                             <asp:Label ID="lbl_Erro" runat="server" CssClass="label-input100 text-center" Font-Size="X-Large"></asp:Label>
                         </div>
                         <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Insert Product
+                            Insert Category
                         </button>
                         <a href="Dashboard.aspx" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left mr-2"></i>Back</a>
 
@@ -81,45 +79,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1"></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Product Name" aria-label="ProductName" aria-describedby="basic-addon1" runat="server" id="productname" required="required" />
-                                        </div>
-
-
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon2">Category</span>
-                                            </div>
-                                            <asp:DropDownList ID="ddl_category" runat="server" CssClass="form-control" aria-label="Category" aria-describedby="basic-addon2" required="required" DataSourceID="SqlDataSource1" DataTextField="description" DataValueField="categoryId"></asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon3"><i class="fa fa-money" aria-hidden="true"></i></span>
-                                            </div>
-                                            <input type="number" class="form-control" step="0.01" placeholder="0.00" aria-label="Price" aria-describedby="basic-addon3" runat="server" id="price" required="required" />
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon4"></span>
-                                            </div>
-                                            <input type="text" aria-multiline="true" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="basic-addon4" runat="server" id="description" />
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon5">#</span>
-                                            </div>
-                                            <input type="number" class="form-control" step="1" placeholder="0" aria-label="Quantity" aria-describedby="basic-addon5" runat="server" id="quantity" />
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon6">Image</span>
-                                            </div>
-                                            <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" class="form-control figure-img" aria-describedby="basic-addon6" />
+                                            <input type="text" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="basic-addon1" runat="server" id="description" required="required" />
                                         </div>
 
                                         <asp:Button ID="btn_Save" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btn_Save_Click" />
@@ -130,30 +90,23 @@
                         </div>
 
                     </div>
+                    <div class="col-7">
+                        <div class="card badge-secondary">
+                            <div class="card-body badge-info">
 
-                    <div class="card badge-secondary">
-                        <div class="card-body badge-info">
-                            <div class="col-12">
                                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                                     <HeaderTemplate>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Products</h3>
+                                                <h3 class="panel-title">Product Category</h3>
                                             </div>
                                             <div class="panel-body">
                                                 <table class="table table-hover table-responsive table-striped " id="MyTable">
                                                     <thead>
                                                         <tr>
-                                                            <th></th>
-                                                            <th>Product Name
-                                                            </th>
-                                                            <th>Category
-                                                            </th>
-                                                            <th>Price
+                                                            <th>Id
                                                             </th>
                                                             <th>Description
-                                                            </th>
-                                                            <th>Quantity
                                                             </th>
                                                             <th>
                                                                 <asp:Button ID="btn_saveall" runat="server" Text="Save All" CssClass="btn btn-sm btn-primary" OnClick="btn_saveall_Click" UseSubmitBehavior="false" />
@@ -166,22 +119,10 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lbl_productId" runat="server" Visible="false"></asp:Label>
+                                                    <b><asp:Label ID="lbl_categoryId" runat="server"></asp:Label></b>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox runat="server" ID="tproduct_nome" ReadOnly="true"> </asp:TextBox>
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox runat="server" ID="tcategory" ReadOnly="true"> </asp:TextBox>
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox runat="server" ID="tprice" ReadOnly="true"> </asp:TextBox>
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox runat="server" ID="tdescription" ReadOnly="true"></asp:TextBox>
-                                                </td>
-                                                <td>
-                                                    <asp:TextBox runat="server" ID="tquantity" TextMode="Number" ReadOnly="true"> </asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="description" ReadOnly="true"> </asp:TextBox>
                                                 </td>
                                                 <td>
                                                     <asp:Button ID="btn_save" runat="server" Text="Save" CssClass="btn btn-sm btn-success" CommandName="btn_save" UseSubmitBehavior="false" Visible="false" />
@@ -202,7 +143,7 @@
                             </div>
                                     </FooterTemplate>
                                 </asp:Repeater>
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="GetProduct" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>
@@ -210,6 +151,7 @@
             </div>
         </div>
     </form>
+
     <script src="/Config/js/jquery-3.2.1.min.js"></script>
     <script src="../Config/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
     <script src="../Config/styles/bootstrap-4.1.2/popper.js"></script>

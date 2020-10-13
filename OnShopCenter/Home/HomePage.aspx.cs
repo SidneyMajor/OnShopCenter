@@ -18,15 +18,33 @@ namespace OnShopCenter.Home
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindigRepeaterProducts("");
-            CheckCart(2);
+            BindigRepeaterProducts("");            
+         
             if (Session["userlogin"] != null)
             {
-                var id = Convert.ToInt32(Session["userId"].ToString());
+                lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+                btn_login.Text = "Logout";
+
+                int id = Convert.ToInt32(Session["userId"].ToString());
                 CheckCart(id);
             }
             
         }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            if (Session["userlogin"] != null)
+            {
+
+                Session.Clear();
+                Response.Redirect("../Home/HomePage.aspx");
+                btn_login.Text = "Login";
+            }
+
+            Response.Redirect("../Home/Login.aspx");
+
+        }
+
 
         private void CheckCart(int id)
         {
@@ -154,8 +172,8 @@ namespace OnShopCenter.Home
                             Connection = myConn
                         };
 
-                        mycommand.Parameters.AddWithValue("@userId", 2);
-                        //mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
+                        //mycommand.Parameters.AddWithValue("@userId", 2);
+                        mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
                         mycommand.Parameters.AddWithValue("@productId", item.ProductId);
                         mycommand.Parameters.AddWithValue("@price", item.Price);
                         mycommand.Parameters.AddWithValue("@quantity", 1);

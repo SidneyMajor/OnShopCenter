@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BackOffice\Dashboard.aspx" />
+    <Content Include="BackOffice\GestCategory.aspx" />
     <Content Include="BackOffice\GestProduct.aspx" />
     <Content Include="BackOffice\GestUser.aspx" />
     <Content Include="Config\eCommerceDoc\bootstrap-4.5.2-dist\css\bootstrap-grid.css" />
@@ -2229,6 +2230,13 @@
     <Compile Include="BackOffice\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BackOffice\GestCategory.aspx.cs">
+      <DependentUpon>GestCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\GestCategory.aspx.designer.cs">
+      <DependentUpon>GestCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackOffice\GestProduct.aspx.cs">
       <DependentUpon>GestProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2669,7 +2677,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\assets\img\blog\latest-post\" />
-    <Folder Include="FrontEnd\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

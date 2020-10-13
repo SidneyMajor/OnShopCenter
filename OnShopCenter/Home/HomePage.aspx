@@ -41,32 +41,21 @@
                         </a>
                     </div>
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    <%-- <nav class="main_nav">
-                        <ul class="d-flex flex-row align-items-start justify-content-start">
-                            <li class="active"><a href="#">Women</a></li>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Home Deco</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </nav>--%>
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                         <!-- Search -->
                           <div class="header_search">
                             <div id="header_search_form">
-                                <asp:TextBox ID="tb_search_input" runat="server" CssClass="search_input" OnTextChanged="tb_search_input_TextChanged" AutoPostBack="True" placeholder="Search Item"/>
-                                <%--<input type="text" class="search_input" placeholder="Search Item" id="teste" runat="server"/>--%>
-                                <%--<asp:button CssClass="header_search_button" runat="server" id="btn_search" OnClick="btn_search_Click"/>--%>
-                                    <%--<img src="/Config/images/search.png" alt="" />--%>
+                                <asp:TextBox ID="tb_search_input" runat="server" CssClass="search_input" OnTextChanged="tb_search_input_TextChanged" AutoPostBack="True" placeholder="Search Item"/> 
                             </div>
                         </div>
                         <!-- User -->
                         <div class="user">
-                            <a href="/CommunPages/Login.aspx">
+                            <div>
+                                <asp:Label ID="lbl_user" Text="" runat="server" />
                                 <div>
-                                    <img src="/Config/images/user.svg" alt="https://www.flaticon.com/authors/freepik" /><div>1</div>
+                                    <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <!-- Cart -->
                         <div class="cart  user">
@@ -256,7 +245,7 @@
                                         <div class="copyright order-md-1 order-2">
                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                             Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                            All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>by <a href="#" target="_blank">Sidney Major</a>
+                                            All rights reserved <i class="fa fa-heart-o mr-1" aria-hidden="true"></i>by <a href="#" target="_blank">Sidney Major</a>
                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                         </div>
                                     </div>

@@ -16,7 +16,7 @@ namespace OnShopCenter.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["util"] == null)
+            if (Session["userRole"] == null)
             {
                 Response.Redirect("Login.aspx");
             }

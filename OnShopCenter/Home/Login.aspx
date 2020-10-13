@@ -49,7 +49,7 @@
                         </span>
                         <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                             <span class="label-input100">Username</span>
-                            <input class="input100" type="text" name="username" placeholder="Type your username" id="username" runat="server" />
+                            <input class="input100" type="text" name="username" placeholder="Type your email" id="username" runat="server" />
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <asp:Label ID="lbl_Erro" runat="server" CssClass="alert-danger label-input100 text-center" ForeColor="Red" Font-Size="X-Large" ></asp:Label>
+                            <asp:Label ID="lbl_Erro" runat="server" CssClass="alert-danger label-input100 text-center btn-block" ForeColor="Red" Font-Size="X-Large" Visible="false"></asp:Label>
                         </div>
                         <div class="flex-col-c p-t-50">
                             <span class="txt1 p-b-17">Or Sign Up Using

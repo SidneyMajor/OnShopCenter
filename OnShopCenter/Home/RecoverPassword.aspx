@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-4">
-                            <asp:Label ID="lbl_result" runat="server" class="label-input100 alert-info "></asp:Label>
+                            <asp:Label ID="lbl_result" runat="server" class="label-input100 alert-heading btn-block" Visible="false"></asp:Label>
                             <br />
                             <asp:HyperLink ID="hl_recuperar" runat="server" Visible="False">[hl_recuperar]</asp:HyperLink>
                         </div>

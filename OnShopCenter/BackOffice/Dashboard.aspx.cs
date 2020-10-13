@@ -56,11 +56,20 @@ namespace OnShopCenter.BackOffice
             }
         }
 
+
         protected void btn_login_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Response.Redirect("../Home/HomePage.aspx");
-            btn_login.Text = "Login";
+            if (Session["userlogin"] != null)
+            {
+
+                Session.Clear();
+                Response.Redirect("../Home/HomePage.aspx");
+                btn_login.Text = "Login";
+            }
+
+            Response.Redirect("../Home/Login.aspx");
+
         }
+
     }
 }

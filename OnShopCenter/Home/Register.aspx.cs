@@ -34,9 +34,9 @@ namespace OnShopCenter.Home
             mycommand.Parameters.AddWithValue("@address", address.Value);
             mycommand.Parameters.AddWithValue("@zipcod", zipcode.Value);
             mycommand.Parameters.AddWithValue("@taxnumber", taxnumber.Value);
-            mycommand.Parameters.AddWithValue("@roleId", Convert.ToInt32(ddl_profile.SelectedValue));
+            mycommand.Parameters.AddWithValue("@roleId", Convert.ToInt32(ddl_role.SelectedValue));
             mycommand.Parameters.AddWithValue("@phone", phonenumber.Value);
-            mycommand.Parameters.AddWithValue("@datanasc", datanasc.Value);
+            mycommand.Parameters.AddWithValue("@datanasc", dateofbirth.Value);
             mycommand.Parameters.AddWithValue("@gender", ddl_gender.SelectedItem.Text);
             mycommand.Parameters.AddWithValue("@pw", Service.EncryptString(password.Value));
             mycommand.Parameters.AddWithValue("@email", email.Value);
@@ -76,7 +76,7 @@ namespace OnShopCenter.Home
 
                     string htmltext = string.Empty;
 
-                    if (ddl_profile.SelectedItem.Text=="Customer")
+                    if (ddl_role.SelectedItem.Text=="Customer")
                     {
                         hl_recuperar.NavigateUrl = "https://localhost:44383/Home/ConfirmEmail.aspx?id=" + Service.EncryptString(resposta_num.ToString());
 

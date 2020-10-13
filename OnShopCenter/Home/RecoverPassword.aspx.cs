@@ -57,9 +57,10 @@ namespace OnShopCenter.Home
                 myConn.Open();
                 mycommand.ExecuteNonQuery();
                 int resposta = Convert.ToInt32(mycommand.Parameters["@retorno"].Value);
-                int resposta_num = Convert.ToInt32(mycommand.Parameters["@retorno_num"].Value);
                 if (resposta != 0)
                 {
+
+                    int resposta_num = Convert.ToInt32(mycommand.Parameters["@retorno_num"].Value);
                     lbl_result.Visible = true;
                     lbl_result.ForeColor = Color.Green;
                     lbl_result.Text = "Email de Recuperação enviado com sucesso! ";
@@ -77,7 +78,9 @@ namespace OnShopCenter.Home
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                lbl_result.Visible = true;
+                lbl_result.ForeColor = Color.Red;
+                lbl_result.Text = ex.Message;
             }
             finally
             {
