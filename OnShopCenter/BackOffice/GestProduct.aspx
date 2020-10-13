@@ -47,7 +47,7 @@
                         <!-- User -->
                         <div class="user">
                             <div>
-                                <asp:Label ID="lbl_user" Text="" runat="server" />
+                                 <a href="../Home/UserProfile.aspx"><asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
                                 <div>
                                     <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>

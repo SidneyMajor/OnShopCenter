@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditUser.aspx.cs" Inherits="OnShopCenter.BackOffice.EditUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserProfile.aspx.cs" Inherits="OnShopCenter.Home.UserProfile" %>
 
 <!DOCTYPE html>
 
@@ -32,7 +32,7 @@
                 <div class="header_overlay"></div>
                 <div class="header_content d-flex flex-row align-items-center justify-content-start">
                     <div class="logo">
-                        <a href="#">
+                        <a href="HomePage.aspx">
                             <div class="d-flex flex-row align-items-center justify-content-start">
                                 <div>
                                     <img src="/Config/images/logo_1.png" alt="" />
@@ -60,7 +60,6 @@
             <div class="container mt-5">
                 <div class="card badge-info">
                     <div class=" card-header ">
-                        <a href="GestUser.aspx" id="link" runat="server" class="btn btn-secondary mb-2"><i class="fa fa-arrow-circle-o-left mr-1"></i>Back</a>
                         <h2 class="text-white font-weight-bold btn-block border-dark"><i class="fa fa-user-circle text-white-50 mr-1"></i>User Information</h2>
                         <div class="card card-body">
 
@@ -118,7 +117,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon5"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                         </div>
-                                        <input type="email" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon5" runat="server" id="email" required="required" />
+                                        <input type="email" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon5" runat="server" id="email" required="required" readonly="true" />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -143,7 +142,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon8">Role</span>
                                         </div>
-                                        <asp:DropDownList ID="ddl_role" runat="server" CssClass="form-control" aria-label="Role" aria-describedby="basic-addon8" required="required" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddl_role" runat="server" CssClass="form-control" aria-label="Role" aria-describedby="basic-addon8" required="required" DataSourceID="SqlDataSource1" DataTextField="roleName" DataValueField="roleId" Enabled="false"></asp:DropDownList>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [UserRole]"></asp:SqlDataSource>
                                     </div>
 
@@ -151,8 +150,9 @@
 
                             </div>
                             <asp:Button ID="btn_Save" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btn_Save_Click" />
-                            <div class="alert-success btn-block">
-                                <asp:Label ID="lbl_result" runat="server" Text="" CssClass="text-center" Font-Size="X-Large"></asp:Label><br />
+                            <a class="btn btn-warning btn-block mt-2" href="ChangePassword.aspx">Change Password</a>
+                            <div class="btn-block">
+                                <asp:Label ID="lbl_result" runat="server" Text="" CssClass=" alert-success text-center btn-block" Font-Size="X-Large" Visible="false"></asp:Label><br />
                             </div>
                         </div>
                     </div>

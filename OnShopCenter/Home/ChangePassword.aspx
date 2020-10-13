@@ -86,10 +86,18 @@
                                 <asp:Button ID="btn_changePw" runat="server" Text="Change" class="login100-form-btn" OnClick="btn_changepw_Click"></asp:Button>
                             </div>
                         </div>
+
+                        <div class="container-login100-form-btn mt-2">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <a class="login100-form-btn mt-2" href="../Home/UserProfile.aspx"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!--===============================================================================================-->
         <script src="../Config/eCommerceDoc/vendor/jquery/jquery-3.2.1.min.js"></script>
         <!--===============================================================================================-->

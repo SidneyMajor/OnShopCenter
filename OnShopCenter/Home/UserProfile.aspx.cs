@@ -5,14 +5,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 
-namespace OnShopCenter.BackOffice
+namespace OnShopCenter.Home
 {
-    public partial class EditUser : System.Web.UI.Page
+    public partial class UserProfile : System.Web.UI.Page
     {
         public User _user = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userlogin"] == null || Session["userRole"].ToString() != "Admin")
+            if (Session["userlogin"] == null)
             {
                 Response.Redirect("../Home/Login.aspx");
             }
@@ -22,9 +22,9 @@ namespace OnShopCenter.BackOffice
 
             if (!IsPostBack)
             {
-                if (Session["edituserId"] != null)
+                if (Session["userId"] != null)
                 {
-                    var id = Convert.ToInt32(Session["edituserId"].ToString());
+                    var id = Convert.ToInt32(Session["userId"].ToString());
                     PopulateData(id);
                 }
             }
@@ -136,8 +136,7 @@ namespace OnShopCenter.BackOffice
             {
                 myConn.Close();
             }
-
-            Response.Redirect("../BackOffice/GestUser.aspx");
+                        
 
         }
 

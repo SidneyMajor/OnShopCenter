@@ -2220,6 +2220,7 @@
     <Content Include="Home\RecoverPassword.aspx" />
     <Content Include="Home\Register.aspx" />
     <Content Include="Home\SetNewPassword.aspx" />
+    <Content Include="Home\UserProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2323,6 +2324,13 @@
     </Compile>
     <Compile Include="Home\SetNewPassword.aspx.designer.cs">
       <DependentUpon>SetNewPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

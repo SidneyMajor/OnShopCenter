@@ -136,9 +136,9 @@ namespace OnShopCenter.BackOffice
 
         protected void RepeaterUsers_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string queryApaga = "delete from myUser";
+            string queryApaga = "";
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
-
+            myConn.Open();
             if (e.CommandName.Equals("btn_edit"))
             {
                 Session["edituserId"] = ((Button)e.Item.FindControl("btn_edit")).CommandArgument;
@@ -149,7 +149,8 @@ namespace OnShopCenter.BackOffice
             {
                 try
                 {
-
+                    queryApaga += "UPDATE myUser SET ";
+                    queryApaga += "ativo='" + 0 + "' ";
                     queryApaga += "WHERE userId=" + ((Button)e.Item.FindControl("btn_delete")).CommandArgument;
 
                     SqlCommand myCommand = new SqlCommand(queryApaga, myConn);
@@ -163,6 +164,8 @@ namespace OnShopCenter.BackOffice
                 {
                     myConn.Close();
                 }
+
+                Response.Redirect("GestUser.aspx");
             }
         }
 

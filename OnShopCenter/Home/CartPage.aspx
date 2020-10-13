@@ -48,7 +48,7 @@
                        <!-- User -->
                         <div class="user">
                             <div>
-                                <asp:Label ID="lbl_user" Text="" runat="server" />
+                                  <a href="../Home/UserProfile.aspx"><asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
                                 <div>
                                     <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
@@ -70,7 +70,7 @@
                                     <img src="/Config/images/phone.svg" alt="https://www.flaticon.com/authors/freepik" />
                                 </div>
                             </div>
-                            <div>+1 912-252-7350</div>
+                            <div>+351 912-252-750</div>
                         </div>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                 <div class="mt-10 badge-dark">
                     <div class="home_container d-flex flex-column align-items-center justify-content-end">
                         <div class="text-center">
-                            <div class="home_title">Shopping Cart</div>
-
+                            <div class="home_title mb-4">Shopping Cart</div>
+                            <asp:Label ID="resellerInfo" runat="server" CssClass="text-center text-white-50" Text="Preço válido online para revendedores com 20% de descontos incluído." Visible="false"/>
                         </div>
                     </div>
                 </div>

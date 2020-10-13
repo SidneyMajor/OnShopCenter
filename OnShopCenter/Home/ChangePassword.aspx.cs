@@ -16,11 +16,14 @@ namespace OnShopCenter.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userRole"] == null)
+            if (Session["userlogin"] == null)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("../Home/Login.aspx");
             }
-            lbl_mg.Text = $"Benvindo \n {Session["util"]}";
+
+            lbl_mg.Text = $"Benvido {Session["userlogin"].ToString()}";
+
+
         }
 
         protected void btn_changepw_Click(object sender, EventArgs e)
@@ -34,7 +37,7 @@ namespace OnShopCenter.Home
                 Connection = myConn
             };
 
-            mycommand.Parameters.AddWithValue("@util", Session["util"].ToString());
+            mycommand.Parameters.AddWithValue("@userid", Convert.ToInt32(Session["userId"].ToString()));
             mycommand.Parameters.AddWithValue("@pwAntiga", Service.EncryptString(old_password.Value));
             mycommand.Parameters.AddWithValue("@pwNova", Service.EncryptString(new_password.Value));
             //Creat parameter output
@@ -70,6 +73,8 @@ namespace OnShopCenter.Home
             {
                 myConn.Close();
             }
+
+            Response.Redirect("../Home/UserProfile.aspx");
         }
     }
 }

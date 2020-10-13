@@ -29,7 +29,10 @@ namespace OnShopCenter.Home
             id = Convert.ToInt32(Session["userId"].ToString());
             BindingRepeaterOrder(id);
 
-
+            if (Session["userRole"].ToString()=="Reseller")
+            {
+                resellerInfo.Visible = true;
+            }
 
             if (OrderDetailsTemps.Count == 0 || OrderDetailsTemps == null)
             {
@@ -124,11 +127,7 @@ namespace OnShopCenter.Home
 
             }
 
-            if (Session["userRole"].ToString() == "Reseller")
-            {
-
-            }
-
+           
             reader.Close();
             myConn.Close();
 
