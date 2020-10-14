@@ -28,7 +28,10 @@ namespace OnShopCenter.Home
                     PopulateData(id);
                 }
             }
-
+            if (Session["userRole"].ToString()=="Admin")
+            {
+                back.HRef ="../BackOffice/Dashboard.aspx";
+            }
         }
 
         private void PopulateData(int id)

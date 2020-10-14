@@ -46,7 +46,8 @@
                         <!-- User -->
                         <div class="user">
                             <div>
-                                <a href="../Home/UserProfile.aspx"><asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
+                                <a href="../Home/UserProfile.aspx">
+                                    <asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
                                 <div>
                                     <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
@@ -65,6 +66,8 @@
 
             <div class="row">
                 <div class="card-body">
+                    <a href="Dashboard.aspx" class="btn btn-secondary mb-2"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+
                     <div class="card-header bg-primary">
                         <h2 class="text-center text-white">Clients</h2>
                     </div>

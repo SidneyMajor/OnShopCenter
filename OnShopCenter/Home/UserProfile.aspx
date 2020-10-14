@@ -32,7 +32,7 @@
                 <div class="header_overlay"></div>
                 <div class="header_content d-flex flex-row align-items-center justify-content-start">
                     <div class="logo">
-                        <a href="HomePage.aspx">
+                        <a href="HomePage.aspx" runat="server" id="back">
                             <div class="d-flex flex-row align-items-center justify-content-start">
                                 <div>
                                     <img src="/Config/images/logo_1.png" alt="" />
