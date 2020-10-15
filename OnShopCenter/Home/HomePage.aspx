@@ -20,8 +20,6 @@
     <link rel="stylesheet" type="text/css" href="/Config/styles/main_styles.css" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/responsive.css" />
     <link href="../Config/styles/bootstrap-4.1.2/bootstrap.min.css" rel="stylesheet" />
-    <%--<link href="../Config/styles/product.css" rel="stylesheet" />--%>
-    <%--<link href="../Config/styles/product.css" rel="stylesheet" />--%>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -43,15 +41,16 @@
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
                     <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                         <!-- Search -->
-                          <div class="header_search">
+                        <div class="header_search">
                             <div id="header_search_form">
-                                <asp:TextBox ID="tb_search_input" runat="server" CssClass="search_input" OnTextChanged="tb_search_input_TextChanged" AutoPostBack="True" placeholder="Search Item"/> 
+                                <asp:TextBox ID="tb_search_input" runat="server" CssClass="search_input" OnTextChanged="tb_search_input_TextChanged" AutoPostBack="True" placeholder="Search Item" />
                             </div>
                         </div>
                         <!-- User -->
                         <div class="user">
                             <div>
-                                  <a href="../Home/UserProfile.aspx"><asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
+                                <a href="../Home/UserProfile.aspx">
+                                    <asp:Label ID="lbl_user" Text="" runat="server" CssClass="text-center text-dark" /></a>
                                 <div>
                                     <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="btn btn-success" BorderStyle="Groove" UseSubmitBehavior="False" ValidateRequestMode="Disabled" OnClick="btn_login_Click" />
                                 </div>
@@ -62,7 +61,8 @@
                             <a href="CartPage.aspx">
                                 <div>
                                     <img class="svg" src="/Config/images/cart.svg" alt="https://www.flaticon.com/authors/freepik" /><div>
-                                        <asp:Label ID="numItemInCart" Text="0" runat="server"></asp:Label></div>
+                                        <asp:Label ID="numItemInCart" Text="0" runat="server"></asp:Label>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -82,19 +82,48 @@
             <div class="super_container_inner">
                 <div class="super_overlay"></div>
                 <!-- Products -->
-
+                <br />
+                <br />
+                <br />
                 <div class="products">
-                    <div class="container">
-                        <div class="row products_row">
-                            <asp:Repeater ID="RepeaterProducts" runat="server" OnItemCommand="RepeaterProducts_ItemCommand" OnItemDataBound="RepeaterProducts_ItemDataBound">
-                                <ItemTemplate>
+                    <div class="container mb-0">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Ordernar por:</span>
+                                    </div>
+                                    <asp:DropDownList ID="ddl_sort" runat="server" AutoPostBack="True" OnTextChanged="ddl_sort_TextChanged" CssClass="dropdown-header" aria-describedby="basic-addon1">
+                                        <asp:ListItem>Nome</asp:ListItem>
+                                        <asp:ListItem>Preço Ascendente</asp:ListItem>
+                                        <asp:ListItem>Preço Descendente</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <%--<div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2">Filtro por categoria:</span>
+                                    </div>
+                                    <asp:DropDownList ID="ddl_filtro" runat="server" AutoPostBack="True" OnTextChanged="ddl_filtro_TextChanged" CssClass="dropdown-header" aria-describedby="basic-addon2" DataSourceID="SqlDataSource1" DataTextField="description" DataValueField="categoryId">
+                                    
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:OnShopCenterConnectionString %>" SelectCommand="SELECT * FROM [Category] ORDER BY [description]"></asp:SqlDataSource>
+                                </div>
+                            </div>--%>
+                        </div>
 
+                        <div class="row products_row">
+
+                            <asp:Repeater ID="RepeaterProducts" runat="server" OnItemCommand="RepeaterProducts_ItemCommand" OnItemDataBound="RepeaterProducts_ItemDataBound">
+
+                                <ItemTemplate>
                                     <!-- Product -->
                                     <div class="col-xl-4 col-md-6 ">
                                         <div class="product">
-                                            <div style="max-width:600px">
+                                            <div style="max-width: 600px">
                                                 <div class="card-footer ">
-                                                    <img src="<%# Eval("ImagePath") %>" style="background-position:center; background-size:cover; height:300px; width:450px;" alt="" />
+                                                    <img src="<%# Eval("ImagePath") %>" style="background-position: center; background-size: cover; height: 300px; width: 450px;" alt="" />
                                                     <%--<asp:Image ID="Image1" runat="server" ImageUrl="<%# Eval("Image") %>" />--%>
                                                 </div>
                                             </div>
@@ -118,11 +147,11 @@
                                                                 <div class="text-capitalize text-dark"><%# Eval("Category") %></div>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="card-footer product_button">
                                                             <div>
                                                                 <div>
-                                                                    <asp:Button ID="btn_cart" runat="server" CssClass="btn btn-success btn-block w-100 border-0 text-dark" UseSubmitBehavior="false" CommandName="btn_cart" Text="Add" BackColor="Transparent"/><div>+</div>
+                                                                    <asp:Button ID="btn_cart" runat="server" CssClass="btn btn-success btn-block w-100 border-0 text-dark" UseSubmitBehavior="false" CommandName="btn_cart" Text="Add" BackColor="Transparent" /><div>+</div>
                                                                     <%--<img src="/Config/images/cart.svg" class="svg" alt="" id="cart"  runat="server" /><%--<div>+</div>--%>
                                                                 </div>
                                                             </div>
@@ -139,122 +168,122 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Features -->
 
-                <!-- Features -->
+            <div class="features">
+                <div class="container">
+                    <div class="row">
 
-                <div class="features">
+                        <!-- Feature -->
+                        <div class="col-lg-4 feature_col">
+                            <div class="feature d-flex flex-row align-items-start justify-content-start">
+                                <div class="feature_left">
+                                    <div class="feature_icon">
+                                        <img src="/Config/images/icon_1.svg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                                    <div class="feature_title">Fast Secure Payments</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature -->
+                        <div class="col-lg-4 feature_col">
+                            <div class="feature d-flex flex-row align-items-start justify-content-start">
+                                <div class="feature_left">
+                                    <div class="feature_icon ml-auto mr-auto">
+                                        <img src="/Config/images/icon_2.svg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                                    <div class="feature_title">Premium Products</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature -->
+                        <div class="col-lg-4 feature_col">
+                            <div class="feature d-flex flex-row align-items-start justify-content-start">
+                                <div class="feature_left">
+                                    <div class="feature_icon">
+                                        <img src="/Config/images/icon_3.svg" alt="" />
+                                    </div>
+                                </div>
+                                <div class="feature_right d-flex flex-column align-items-start justify-content-center">
+                                    <div class="feature_title">Free Delivery</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+
+            <footer class="footer">
+                <div class="footer_content">
                     <div class="container">
                         <div class="row">
 
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon">
-                                            <img src="/Config/images/icon_1.svg" alt="" />
-                                        </div>
+                            <!-- About -->
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_about">
+                                    <div class="footer_logo">
+                                        <a href="#">
+                                            <div class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="footer_logo_icon">
+                                                    <img src="/Config/images/logo_2.png" alt="" />
+                                                </div>
+                                                <div>On Shop Center</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Fast Secure Payments</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon ml-auto mr-auto">
-                                            <img src="/Config/images/icon_2.svg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Premium Products</div>
+                                    <div class="footer_about_text">
+                                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Feature -->
-                            <div class="col-lg-4 feature_col">
-                                <div class="feature d-flex flex-row align-items-start justify-content-start">
-                                    <div class="feature_left">
-                                        <div class="feature_icon">
-                                            <img src="/Config/images/icon_3.svg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="feature_right d-flex flex-column align-items-start justify-content-center">
-                                        <div class="feature_title">Free Delivery</div>
+
+
+                            <!-- Footer Contact -->
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_contact">
+                                    <div class="footer_social">
+                                        <div class="footer_title">Social</div>
+                                        <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
+                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-                <!-- Footer -->
-
-                <footer class="footer">
-                    <div class="footer_content">
-                        <div class="container">
-                            <div class="row">
-
-                                <!-- About -->
-                                <div class="col-lg-4 footer_col">
-                                    <div class="footer_about">
-                                        <div class="footer_logo">
-                                            <a href="#">
-                                                <div class="d-flex flex-row align-items-center justify-content-start">
-                                                    <div class="footer_logo_icon">
-                                                        <img src="/Config/images/logo_2.png" alt="" />
-                                                    </div>
-                                                    <div>On Shop Center</div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="footer_about_text">
-                                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Footer Contact -->
-                                <div class="col-lg-4 footer_col">
-                                    <div class="footer_contact">
-                                        <div class="footer_social">
-                                            <div class="footer_title">Social</div>
-                                            <ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
+                <div class="footer_bar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
+                                    <div class="copyright order-md-1 order-2">
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                        All rights reserved <i class="fa fa-heart-o mr-1" aria-hidden="true"></i>by <a href="#" target="_blank">Sidney Major</a>
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="footer_bar">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
-                                        <div class="copyright order-md-1 order-2">
-                                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                            All rights reserved <i class="fa fa-heart-o mr-1" aria-hidden="true"></i>by <a href="#" target="_blank">Sidney Major</a>
-                                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
+        </div>
 
         </div>
 

@@ -8,9 +8,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>On Shop Center</title>
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="../Config/assets/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />     
 
+    <link rel="shortcut icon" type="image/x-icon" href="../Config/assets/img/favicon.ico" />
     <link rel="icon" type="image/png" href="/Config/eCommerceDoc/images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/Config/styles/bootstrap-4.1.2/bootstrap.min.css" />
     <link href="/Config/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -23,7 +23,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="super_container">
-
+           
             <!-- Header -->
 
 
@@ -168,7 +168,7 @@
                                             <ul class="cart_extra_total_list">
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Subtotal</div>
-                                                    <div class="cart_extra_total_value ml-auto"><span>€ <asp:Label ID="lbl_sub" runat="server"></asp:Label></span></div>
+                                                    <div class="cart_extra_total_value ml-auto"><span><asp:Label ID="lbl_sub" runat="server"></asp:Label></span></div>
                                                 </li>
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Shipping</div>
@@ -176,7 +176,7 @@
                                                 </li>
                                                 <li class="d-flex flex-row align-items-center justify-content-start">
                                                     <div class="cart_extra_total_title">Total</div>
-                                                    <div class="cart_extra_total_value ml-auto"><span>€ <asp:Label ID="lbl_total" runat="server"></asp:Label></span></</div>
+                                                    <div class="cart_extra_total_value ml-auto"><span><asp:Label ID="lbl_total" runat="server"></asp:Label></span></</div>
                                                 </li>
                                             </ul>
                                            <asp:Button ID="btn_checkout" runat="server" Text="Proceed to Checkout" CssClass="btn btn-success trans_200 btn-block" OnClick="btn_checkout_Click"/>

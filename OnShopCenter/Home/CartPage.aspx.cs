@@ -5,6 +5,9 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
 using System.Web.UI.WebControls;
 
 
@@ -18,21 +21,38 @@ namespace OnShopCenter.Home
         private int id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-Pt");
             if (Session["userlogin"] == null)
             {
-                Response.Redirect("../Home/Login.aspx");
+                if (Session["anonimo"] != null)
+                {
+                    OrderDetailsTemps = (List<OrderDetailsTemp>)Session["anonimo"];
+
+                    lbl_total.Text = OrderDetailsTemps.Sum(o=>  Convert.ToDecimal((decimal)o.Price*o.Quantity)).ToString("C");
+                    lbl_sub.Text = OrderDetailsTemps.Sum(o => Convert.ToDecimal((decimal)o.Price * o.Quantity)).ToString("C");
+                    numItemInCart.Text = OrderDetailsTemps.Count().ToString();
+                    RepeaterOrder.DataSource = OrderDetailsTemps;
+                    RepeaterOrder.DataBind();
+                }
+
             }
-
-            lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
-            btn_login.Text = "Logout";
-
-            id = Convert.ToInt32(Session["userId"].ToString());
-            BindingRepeaterOrder(id);
-
-            if (Session["userRole"].ToString()=="Reseller")
+            else
             {
-                resellerInfo.Visible = true;
+                lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
+                btn_login.Text = "Logout";
+
+                id = Convert.ToInt32(Session["userId"].ToString());
+                BindingRepeaterOrder(id);
+
+                if (Session["userRole"].ToString() == "Reseller")
+                {
+                    resellerInfo.Visible = true;
+                }
+
             }
+
+
+
 
             if (OrderDetailsTemps.Count == 0 || OrderDetailsTemps == null)
             {
@@ -78,8 +98,8 @@ namespace OnShopCenter.Home
             while (reader.Read())
             {
                 numItemInCart.Text = reader.GetInt32(7).ToString();
-                lbl_total.Text = reader.GetSqlMoney(8).ToString();
-                lbl_sub.Text = reader.GetSqlMoney(8).ToString();
+                lbl_total.Text = ((decimal) reader.GetSqlMoney(8)).ToString("C");
+                lbl_sub.Text = ((decimal)reader.GetSqlMoney(8)).ToString("C");
                 SqlMoney price = reader.GetSqlMoney(2);
 
 
@@ -127,7 +147,7 @@ namespace OnShopCenter.Home
 
             }
 
-           
+
             reader.Close();
             myConn.Close();
 
@@ -147,35 +167,51 @@ namespace OnShopCenter.Home
         {
             string query = string.Empty;
             int productId = Convert.ToInt32(e.CommandArgument);
-
-            if (e.CommandName == "btn_decrease")
+            if (Session["userlogin"] != null)
             {
-                query = $"Update OrderDetailTemp set quantity-=1 Where userId={id} And productId={productId} And quantity>0 ";
+                if (e.CommandName == "btn_decrease")
+                {
+                    query = $"Update OrderDetailTemp set quantity-=1 Where userId={id} And productId={productId} And quantity>0 ";
+                }
+                else if (e.CommandName == "btn_increase")
+                {
+                    query = $"Update OrderDetailTemp set quantity+=1 Where userId={id} And productId={productId} And quantity>=0 ";
+                }
+
+
+                SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+                SqlCommand myCommand = new SqlCommand(query, myConn);
+
+                try
+                {
+                    myConn.Open();
+
+                    myCommand.ExecuteNonQuery();
+
+                }
+                catch (Exception)
+                {
+
+
+                }
+                finally
+                {
+                    myConn.Close();
+                }
             }
-            else if (e.CommandName == "btn_increase")
+            else
             {
-                query = $"Update OrderDetailTemp set quantity+=1 Where userId={id} And productId={productId} And quantity>=0 ";
-            }
-
-
-            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
-            SqlCommand myCommand = new SqlCommand(query, myConn);
-
-            try
-            {
-                myConn.Open();
-
-                myCommand.ExecuteNonQuery();
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-            finally
-            {
-                myConn.Close();
+                if (e.CommandName == "btn_decrease")
+                {
+                    OrderDetailsTemps.Find(o => o.ProductId == productId).Quantity -= 1;
+                }
+                else if (e.CommandName == "btn_increase")
+                {
+                    OrderDetailsTemps.Find(o => o.ProductId == productId).Quantity += 1;
+                }
+                
+                numItemInCart.Text = OrderDetailsTemps.Count().ToString();
+                Session["anonimo"] = OrderDetailsTemps;
             }
 
             Response.Redirect("CartPage.aspx");
@@ -196,6 +232,11 @@ namespace OnShopCenter.Home
 
         protected void btn_checkout_Click(object sender, EventArgs e)
         {
+            if (Session["userlogin"] == null)
+            {
+                Response.Redirect("../Home/Login.aspx");
+                Session["anonimo"] = OrderDetailsTemps;
+            }
 
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand;

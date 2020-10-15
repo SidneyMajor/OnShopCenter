@@ -14,12 +14,10 @@ namespace OnShopCenter.Home
     {
         public List<Product> Products { get; set; } = new List<Product>();
 
-        public List<OrderDetailsTemp> OrderDetailsTemps { get; set; } = new List<OrderDetailsTemp>();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindigRepeaterProducts("");            
-         
+            BindigRepeaterProducts("");
+
             if (Session["userlogin"] != null)
             {
                 lbl_user.Text = $"Benvido {Session["userlogin"].ToString()}";
@@ -28,7 +26,16 @@ namespace OnShopCenter.Home
                 int id = Convert.ToInt32(Session["userId"].ToString());
                 CheckCart(id);
             }
-            
+
+            if (Session["anonimo"] != null)
+            {
+                List<OrderDetailsTemp> OrderDetailsTemps = (List<OrderDetailsTemp>)Session["anonimo"];
+                numItemInCart.Text = OrderDetailsTemps.Count().ToString();
+            }
+
+
+            //ddl_filtro.Items.Insert(0,new ListItem ("All","0"));
+
         }
 
         protected void btn_login_Click(object sender, EventArgs e)
@@ -93,7 +100,7 @@ namespace OnShopCenter.Home
                 "Category.description from Product inner join Category on Category.categoryId = Product.categoryId " +
                 "order by Product.productName";*/
             Products = new List<Product>();
-            
+
             SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
             SqlCommand mycommand = new SqlCommand
             {
@@ -111,8 +118,8 @@ namespace OnShopCenter.Home
             while (reader.Read())
             {
                 string base64 = string.Empty;
-                
-                if (reader[6]!=null && reader[6].ToString().Length>1)
+
+                if (reader[6] != null && reader[6].ToString().Length > 1)
                 {
                     base64 = Convert.ToBase64String((byte[])reader[6]);
                 }
@@ -128,7 +135,7 @@ namespace OnShopCenter.Home
                     path = $"data:image/jpeg;base64,{base64}";
                 }
 
-                
+
 
                 Products.Add(new Product
                 {
@@ -137,14 +144,14 @@ namespace OnShopCenter.Home
                     Price = reader.GetSqlMoney(2),
                     Description = reader.GetString(3),
                     Category = reader.GetString(5),
-                    ImagePath= path
+                    ImagePath = path
                 });
             }
-            
+
             reader.Close();
             myConn.Close();
 
-            var list= Products.Where(p => p.ProductName.ToLower().Contains(product));
+            var list = Products.Where(p => p.ProductName.ToLower().Contains(product));
 
             RepeaterProducts.DataSource = list.ToList();
             RepeaterProducts.DataBind();
@@ -152,59 +159,100 @@ namespace OnShopCenter.Home
 
         protected void RepeaterProducts_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            List<OrderDetailsTemp> OrderDetailsTemps = new List<OrderDetailsTemp>();
+            if (Session["anonimo"] != null)
+            {
+                OrderDetailsTemps = (List<OrderDetailsTemp>)Session["anonimo"];
+            }
 
             if (e.CommandName.Equals("btn_cart"))
             {
                 if (Session["userlogin"] == null)
                 {
-                    Response.Redirect("../Home/Login.aspx");
-                }
-                foreach (var item in Products)
-                {
-                    if (item.ProductId.ToString() == ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
+                    var temp = new OrderDetailsTemp();
+
+                    foreach (var item in Products)
                     {
-                        SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
-                        SqlCommand mycommand = new SqlCommand
+                        if (item.ProductId.ToString() == ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
                         {
-                            CommandType = CommandType.StoredProcedure,
-                            CommandText = "AddProduct",
 
-                            Connection = myConn
-                        };
-
-                        //mycommand.Parameters.AddWithValue("@userId", 2);
-                        mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
-                        mycommand.Parameters.AddWithValue("@productId", item.ProductId);
-                        mycommand.Parameters.AddWithValue("@price", item.Price);
-                        mycommand.Parameters.AddWithValue("@quantity", 1);
-                        
-                        SqlParameter valor = new SqlParameter
-                        {
-                            ParameterName = "@retorno",
-                            Direction = ParameterDirection.Output,
-                            SqlDbType = SqlDbType.Int,
-                            Size = 6
-                        };
-                        //add parameter output
-                        mycommand.Parameters.Add(valor);
-
-                        try
-                        {
-                            myConn.Open();
-                            mycommand.ExecuteNonQuery();
-                            numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
-                        }
-                        catch (Exception)
-                        {
+                            temp.Category = item.Category;
+                            temp.Description = item.Description;
+                            temp.ImagePath = item.ImagePath;
+                            temp.ProductId = item.ProductId;
+                            temp.Price = item.Price;
+                            temp.Quantity = 1;
+                            temp.ProductName = item.ProductName;
 
                         }
-                        finally
-                        {
-                            myConn.Close();
-                        }
+                    }
 
+                    if (temp != null)
+                    {
+                        if (OrderDetailsTemps.Find(o => o.ProductId == temp.ProductId) == null)
+                        {
+                            OrderDetailsTemps.Add(temp);
+                        }
+                        else
+                        {
+                            OrderDetailsTemps.Find(o => o.ProductId == temp.ProductId).Quantity += 1;
+                        }
+                    }
+
+                    numItemInCart.Text = OrderDetailsTemps.Count().ToString();
+                    Session["anonimo"] = OrderDetailsTemps;
+                    //Response.Redirect("../Home/Login.aspx");
+                }
+                else
+                {
+                    foreach (var item in Products)
+                    {
+                        if (item.ProductId.ToString() == ((Button)e.Item.FindControl("btn_cart")).CommandArgument)
+                        {
+                            SqlConnection myConn = new SqlConnection(ConfigurationManager.ConnectionStrings["OnShopCenterConnectionString"].ConnectionString);
+                            SqlCommand mycommand = new SqlCommand
+                            {
+                                CommandType = CommandType.StoredProcedure,
+                                CommandText = "AddProduct",
+
+                                Connection = myConn
+                            };
+
+                            //mycommand.Parameters.AddWithValue("@userId", 2);
+                            mycommand.Parameters.AddWithValue("@userId", Convert.ToInt32(Session["userId"].ToString()));
+                            mycommand.Parameters.AddWithValue("@productId", item.ProductId);
+                            mycommand.Parameters.AddWithValue("@price", item.Price);
+                            mycommand.Parameters.AddWithValue("@quantity", 1);
+
+                            SqlParameter valor = new SqlParameter
+                            {
+                                ParameterName = "@retorno",
+                                Direction = ParameterDirection.Output,
+                                SqlDbType = SqlDbType.Int,
+                                Size = 6
+                            };
+                            //add parameter output
+                            mycommand.Parameters.Add(valor);
+
+                            try
+                            {
+                                myConn.Open();
+                                mycommand.ExecuteNonQuery();
+                                numItemInCart.Text = mycommand.Parameters["@retorno"].Value.ToString();
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                            finally
+                            {
+                                myConn.Close();
+                            }
+
+                        }
                     }
                 }
+
 
 
             }
@@ -221,7 +269,7 @@ namespace OnShopCenter.Home
             }
         }
 
-        
+
 
         protected void tb_search_input_TextChanged(object sender, EventArgs e)
         {
@@ -236,5 +284,36 @@ namespace OnShopCenter.Home
             }
 
         }
+
+        protected void ddl_sort_TextChanged(object sender, EventArgs e)
+        {
+            if (ddl_sort.Text == "Nome")
+            {
+                var list = Products.OrderBy(p => p.ProductName);
+
+                RepeaterProducts.DataSource = list.ToList();
+                RepeaterProducts.DataBind();
+            }
+            else if (ddl_sort.Text == "Preço Ascendente")
+            {
+                var list = Products.OrderBy(p => p.Price);
+                RepeaterProducts.DataSource = list.ToList();
+                RepeaterProducts.DataBind();
+            }
+            else if (ddl_sort.Text == "Preço Descendente")
+            {
+                var list = Products.OrderByDescending(p => p.Price);
+                RepeaterProducts.DataSource = list.ToList();
+                RepeaterProducts.DataBind();
+            }
+
+        }
+
+        //protected void ddl_filtro_TextChanged(object sender, EventArgs e)
+        //{
+        //    var list = Products.Where(p=>p.Category.ToLower()==ddl_filtro.SelectedItem.Text.ToLower()).OrderByDescending(p => p.Category);
+        //    RepeaterProducts.DataSource = list.ToList();
+        //    RepeaterProducts.DataBind();
+        //}
     }
 }
